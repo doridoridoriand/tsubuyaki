@@ -1,0 +1,7 @@
+db:
+  production:
+    adapter:  mysql2
+    host:     host
+    username: user
+    password: password
+    database: favrica_sns
