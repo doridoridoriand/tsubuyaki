@@ -10,7 +10,7 @@ create table `bot_accounts` (
   primary key(`id`)
 ) engine=InnoDB default charset=utf8;
 
-create table `keywords` (
+create table `favrica_keywords` (
   `id`         int(10)      unsigned not null,
   `keyword_en` varchar(255) not null,
   `keyword_ja` varchar(255) not null,
