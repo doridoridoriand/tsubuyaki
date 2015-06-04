@@ -26,14 +26,20 @@ logger.info("start to tweet with keyword: #{OPTIONS[:keyword_en]}")
 
 begin
   keyword = FavricaKeyword.where(keyword_en: OPTIONS[:keyword_en])
+  bot_account = BotAccount.where(keyword_en: OPTIONS[:keyword_en])
   keyword_string = []
   keyword.each do |node|
     keyword_string << node.keyword_ja
   end
-  json_data = JSON.parse!(open(URI.encode("#{FavricaSns::FAVRICA_SEARCH_URL_ENDPOINT}#{keyword_string[0]}")).read)
-  p json_data.generate_tweet_content
-  #p json_data.generate_tweet_content_with_direct_link
+  # デバッグが面倒なので仮のexecuteを追加
+  if (OPTIONS[:execute])
+    json_data = JSON.parse!(open(URI.encode("#{FavricaSns::FAVRICA_SEARCH_URL_ENDPOINT}#{keyword_string[0]}")).read)
+    p json_data.generate_tweet_content
+    p json_data.generate_tweet_content_with_direct_link
+  end
 rescue => error
   logger.info(error.class)
   logger.info("keyword: #{OPTIONS[:keyword_en]} is not found in database")
 end
+
+p bot_account.api_client
