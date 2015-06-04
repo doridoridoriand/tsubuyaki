@@ -15,6 +15,7 @@ ActiveRecord::Base.establish_connection(db_config['db']['production'])
 
 module FavricaSns
   CACHE_DIR = File.expand_path(File.join(__FILE__, '..', '..', 'tmp', 'cache'))
+  LOG_DIR = File.expand_path(File.join(__FILE__, '..', '..', 'log'))
   FAVRICA_SEARCH_URL_ENDPOINT = 'https://favrica.net/api/v3/items/search?text='
   DESCRIPTION_TRUNCATE = [0, 60]
 end
