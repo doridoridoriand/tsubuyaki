@@ -2,6 +2,10 @@
 
 $: << File.expand_path(File.join(__FILE__, '..', '..', 'lib'))
 require 'favrica_sns'
+$: << File.expand_path(File.join(__FILE__, '..', '..', 'helper'))
+require 'tweet_specific_keyword_helper'
+
+include TweetSpecificKeywordHelper
 
 OPTIONS = {}
 OptionParser.new do |opt|
@@ -18,16 +22,17 @@ raise OptionParser::MissingArgument unless OPTIONS[:number_of_tweet_times]
 logger = Logger.new(OPTIONS[:logfile] || STDOUT)
 logger.level = OPTIONS[:execute] ? Logger::INFO : Logger::DEBUG
 
+logger.info("start to tweet with keyword: #{OPTIONS[:keyword_en]}")
+
 begin
   keyword = FavricaKeyword.where(keyword_en: OPTIONS[:keyword_en])
+  keyword_string = []
   keyword.each do |node|
-    puts node.keyword_ja
+    keyword_string << node.keyword_ja
   end
+  json_data = JSON.parse!(open(URI.encode("#{FavricaSns::FAVRICA_SEARCH_URL_ENDPOINT}#{keyword_string[0]}")).read)
+  p json_data.generate_tweet_content
 rescue => error
-  logger.info(error)
   logger.info(error.class)
   logger.info("keyword: #{OPTIONS[:keyword_en]} is not found in database")
 end
-
-json_data = JSON.parse(open(FavricaSns::FAVRICA_SEARCH_URL_ENDPOINT << keyword.map {|node| node.keyword_ja}).read)
-puts json_data
