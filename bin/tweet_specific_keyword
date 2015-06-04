@@ -31,7 +31,8 @@ begin
     keyword_string << node.keyword_ja
   end
   json_data = JSON.parse!(open(URI.encode("#{FavricaSns::FAVRICA_SEARCH_URL_ENDPOINT}#{keyword_string[0]}")).read)
-  p json_data.generate_tweet_content
+  #p json_data.generate_tweet_content
+  p json_data.generate_tweet_content_with_direct_link
 rescue => error
   logger.info(error.class)
   logger.info("keyword: #{OPTIONS[:keyword_en]} is not found in database")
