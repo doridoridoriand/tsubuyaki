@@ -1,6 +1,3 @@
-#$: << File.expand_path(File.join(__FILE__, '..', '..', 'lib'))
-#require 'favrica_sns'
-
 module TweetSpecificKeywordHelper
   def generate_tweet_content
     data = []
