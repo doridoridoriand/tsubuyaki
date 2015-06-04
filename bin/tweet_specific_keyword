@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+
+$: << File.expand_path(File.join(__FILE__, '..', '..', 'lib'))
+require 'favrica_sns'
+
+OPTIONS = {}
+OptionParser.new do |opt|
+  opt.on('-k keyword_en', '--keyword_en', String)  {|v| OPTIONS[:keyword_en]            = v}
+  opt.on('-n number_of_tweet_times',      Integer) {|v| OPTIONS[:number_of_tweet_times] = v}
+  opt.on('-l logfile',    '--logfile',    String)  {|v| OPTIONS[:logfile]               = v}
+  opt.on('-e',            '--execute')             {|v| OPTIONS[:execute]               = v}
+  opt.parse!(ARGV)
+end
+
+raise OptionParser::MissingArgument unless OPTIONS[:keyword_en]
+raise OptionParser::MissingArgument unless OPTIONS[:number_of_tweet_times]
+
+logger = Logger.new(OPTIONS[:logfile] || STDOUT)
+logger.level = OPTIONS[:execute] ? Logger::INFO : Logger::DEBUG
+
+begin
+  keyword = FavricaKeyword.where(keyword_en: OPTIONS[:keyword_en])
+  keyword.each do |node|
+    puts node.keyword_ja
+  end
+rescue => error
+  logger.info(error)
+  logger.info(error.class)
+  logger.info("keyword: #{OPTIONS[:keyword_en]} is not found in database")
+end
+
+json_data = JSON.parse(open(FavricaSns::FAVRICA_SEARCH_URL_ENDPOINT << keyword.map {|node| node.keyword_ja}).read)
+puts json_data
