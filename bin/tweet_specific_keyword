@@ -4,8 +4,10 @@ $: << File.expand_path(File.join(__FILE__, '..', '..', 'lib'))
 require 'favrica_sns'
 $: << File.expand_path(File.join(__FILE__, '..', '..', 'helper'))
 require 'tweet_specific_keyword_helper'
+require 'bot_account_helper'
 
 include TweetSpecificKeywordHelper
+include BotAccountModule
 
 OPTIONS = {}
 OptionParser.new do |opt|
@@ -42,4 +44,5 @@ rescue => error
   logger.info("keyword: #{OPTIONS[:keyword_en]} is not found in database")
 end
 
-p bot_account.api_client
+bot_account.api_client.update('aaaa')
+
