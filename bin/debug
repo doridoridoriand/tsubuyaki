@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+$: << File.expand_path(File.join(__FILE__, '..', '..', 'lib'))
+require 'favrica_sns'
+$: << File.expand_path(File.join(__FILE__, '..', '..', 'helper'))
+require 'tweet_specific_keyword_helper'
+require 'bot_account_helper'
+
+include TweetSpecificKeywordHelper
+include BotAccountModule
+
+OPTIONS = {}
+OptionParser.new do |opt|
+  opt.on('-k keyword_en', '--keyword_en', String)  {|v| OPTIONS[:keyword_en] = v}
+  opt.parse!(ARGV)
+end
+
+keyword = FavricaKeyword.where(keyword_en: OPTIONS[:keyword_en])
+keyword_string = []
+keyword.each do |node|
+  keyword_string << node.keyword_ja
+end
+json_data = JSON.parse!(open(URI.encode("#{FavricaSns::FAVRICA_SEARCH_URL_ENDPOINT}#{keyword_string[0]}")).read)
+images_arr = []
+json_data[0]['images'].each do |image|
+  images_arr << image['large_url']
+end
+images_arr[0..3]
