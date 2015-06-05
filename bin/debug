@@ -16,6 +16,7 @@ OptionParser.new do |opt|
 end
 
 keyword = FavricaKeyword.where(keyword_en: OPTIONS[:keyword_en])
+bot_account = BotAccount.where(keyword_en: OPTIONS[:keyword_ja])
 keyword_string = []
 keyword.each do |node|
   keyword_string << node.keyword_ja
@@ -25,4 +26,6 @@ images_arr = []
 json_data[0]['images'].each do |image|
   images_arr << image['large_url']
 end
-images_arr[0..3]
+#media_data = open(images_arr[0]).instance_eval("def original_filename; #{File.basename(images_arr[0].path)}: end")
+p URI.parse(images_arr[0])
+#bot_account.api_client.update_with_media(Time.now.to_s, media_data)
