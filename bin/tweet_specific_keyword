@@ -24,7 +24,7 @@ raise OptionParser::MissingArgument unless OPTIONS[:number_of_tweet_times]
 logger = Logger.new(OPTIONS[:logfile] || STDOUT)
 logger.level = OPTIONS[:execute] ? Logger::INFO : Logger::DEBUG
 
-logger.info("start to tweet with keyword: #{OPTIONS[:keyword_en]}")
+logger.info("searching in farvica.net with this keyword: #{OPTIONS[:keyword_en]}")
 
 begin
   keyword = FavricaKeyword.where(keyword_en: OPTIONS[:keyword_en])
@@ -36,13 +36,20 @@ begin
   # デバッグが面倒なので仮のexecuteを追加
   if (OPTIONS[:execute])
     json_data = JSON.parse!(open(URI.encode("#{FavricaSns::FAVRICA_SEARCH_URL_ENDPOINT}#{keyword_string[0]}")).read)
-    p json_data.generate_tweet_content
-    p json_data.generate_tweet_content_with_direct_link
+    rand = Random.new
+    for i in 0..(OPTIONS[:number_of_tweet_times] - 1) do
+      if (rand(0..1) == 1)
+        bot_account.api_client.update(json_data.generate_tweet_content[i])
+        logger.info("tweet with this text: #{json_data.generate_tweet_content[i]}")
+      else
+        bot_account.api_client.update(json_data.generate_tweet_content_with_direct_link[i])
+        logger.info("tweet with this text: #{json_data.generate_tweet_content_with_direct_link[i]}")
+      end
+    end
   end
+  logger.info('tweet end')
 rescue => error
   logger.info(error.class)
   logger.info("keyword: #{OPTIONS[:keyword_en]} is not found in database")
 end
-
-bot_account.api_client.update('aaaa')
 
