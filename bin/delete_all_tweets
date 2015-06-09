@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+
+$: << File.expand_path(File.join(__FILE__, '..', '..', 'lib'))
+require 'favrica_sns'
+$: << File.expand_path(File.join(__FILE__, '..', '..', 'helper'))
+require 'tweet_specific_keyword_helper'
+require 'bot_account_helper'
+
+include TweetSpecificKeywordHelper
+include BotAccountModule
+
+#TODO: 要するに黒歴史クリーナー
+OPTIONS = {}
+OptionParser.new do |opt|
+  opt.on('-k keyword_en', '--keyword_en', String) {|v| OPTIONS[:keyword_en] = v}
+  opt.on('-l logfile',    '--logfile',    String) {|v| OPTIONS[:logfile]    = v}
+  opt.on('-e',            '--execute')            {|v| OPTIONS[:execute]    = v}
+  opt.parse!(ARGV)
+end
+
+raise OptionParser::MissingArgument unless OPTIONS[:keyword_en]
+
+logger = Logger.new(OPTIONS[:logfile] || STDOUT)
+logger.level = OPTIONS[:execute] ? Logger::INFO : Logger::DEBUG
+
+logger.info("Start to Delete All Tweets: #{OPTIONS[:keyword_en]}")
+
+begin
+  bot_account = BotAccount.find_by(keyword_en: OPTIONS[:keyword_en])
+  if (bot_account.api_client.user_timeline().map {|node| node.id}.to_a)
+    data = bot_account.api_client.user_timeline()
+    data_arr = data.map {|node| node.id}.to_a
+    data_arr.each do |entry|
+      bot_account.api_client.destroy_status(entry)
+      logger.info("Delete status: #{entry}")
+    end
+    sleep(300)
+  end
+  logger.info('All tweet is removed')
+rescue => error
+  logger.info("Keyword: #{OPTIONS[:keyword_en]} is not found in database")
+  logger.error("Or error occured because of: #{error.message}")
+end
