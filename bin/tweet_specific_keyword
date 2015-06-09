@@ -33,7 +33,6 @@ begin
   keyword.each do |node|
     keyword_string << node.keyword_ja
   end
-  # デバッグが面倒なので仮のexecuteを追加
   json_data = JSON.parse!(open(URI.encode("#{FavricaSns::FAVRICA_SEARCH_URL_ENDPOINT}#{keyword_string[0]}")).read)
   if (OPTIONS[:execute])
     rand = Random.new
@@ -50,10 +49,6 @@ begin
         logger.info("tweet with this text: #{json_data.generate_tweet_content_with_direct_link[i][:tweet_string]}")
       end
     end
-  end
-
-  open(json_data.generate_tweet_content[1][:image].sample) do |data|
-    p data
   end
 
   logger.info('tweet end')
