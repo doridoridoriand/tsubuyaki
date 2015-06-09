@@ -25,10 +25,4 @@ module TweetSpecificKeywordHelper
   def truncate_description(string)
     string[FavricaSns::DESCRIPTION_TRUNCATE[0]..FavricaSns::DESCRIPTION_TRUNCATE[1]]
   end
-
-  def images_array
-    self.each do |entry|
-
-    end
-  end
 end
