@@ -18,5 +18,5 @@ module FavricaSns
   LOG_DIR = File.expand_path(File.join(__FILE__, '..', '..', 'log'))
   FAVRICA_SEARCH_URL_ENDPOINT = 'https://favrica.net/api/v3/items/search?text='
   FAVRICA_ITEM_ENDPOINT = FAVRICA_SEARCH_URL_ENDPOINT.split('search')[0]
-  DESCRIPTION_TRUNCATE = [0, 55]
+  DESCRIPTION_TRUNCATE = [0, 30]
 end

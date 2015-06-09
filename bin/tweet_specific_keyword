@@ -41,12 +41,12 @@ begin
         open(json_data.tweet_content[i][:image].sample) do |data|
           bot_account.api_client.update_with_media("#{json_data.tweet_content[i][:tweet_string]} #{hash_tags(source_keyword[0], json_data.tweet_content[i][:item_keywords])}", data)
         end
-        logger.info("tweet with this text: #{json_data.tweet_content[i][:tweet_string]}")
+        logger.info("tweet with this text: #{json_data.tweet_content[i][:tweet_string]} #{hash_tags(source_keyword[0], json_data.tweet_content[i][:item_keywords])}")
       else
         open(json_data.tweet_content_with_direct_link[i][:image].sample) do |data|
-          bot_account.api_client.update_with_media("#{json_data.tweet_content_with_direct_link[i][:tweet_string]} #{hash_tags(source_keyword[0], json_data.tweet_content[i][:item_keywords])}", data)
+          bot_account.api_client.update_with_media("#{json_data.tweet_content_with_direct_link[i][:tweet_string]} #{hash_tags(source_keyword[0], json_data.tweet_content_with_direct_link[i][:item_keywords])}", data)
         end
-        logger.info("tweet with this text: #{json_data.tweet_content_with_direct_link[i][:tweet_string]}")
+        logger.info("tweet with this text: #{json_data.tweet_content_with_direct_link[i][:tweet_string]} #{hash_tags(source_keyword[0], json_data.tweet_content_with_direct_link[i][:item_keywords])}")
       end
     end
   end

@@ -26,13 +26,18 @@ module TweetSpecificKeywordHelper
   def hash_tags(source_keyword, item_keywords)
     item_keywords.delete(source_keyword)
     hash_keywords = item_keywords.map {|keyword| keyword = "##{keyword}"}
-    hash_keywords.sample
+    if (hash_keywords.count > 1)
+      return_array_data = hash_keywords.join(' ')
+    else
+      return_array_data = hash_keywords[0]
+    end
+    return_array_data
   end
 
   private
 
   def truncate_description(string)
-    string[FavricaSns::DESCRIPTION_TRUNCATE[0]..FavricaSns::DESCRIPTION_TRUNCATE[1]]
+    string[FavricaSns::DESCRIPTION_TRUNCATE[0]..FavricaSns::DESCRIPTION_TRUNCATE[1]] << '…'
   end
 
   def item_keywords(item_id)
