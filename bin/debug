@@ -28,5 +28,6 @@ json_data[0]['images'].each do |image|
 end
 
 item_keywords = JSON.parse!(open(URI.encode("#{FavricaSns::FAVRICA_ITEM_ENDPOINT}#{json_data.sample['id']}/keywords")).read).map {|node| node['value']}.to_a
+item_keywords.delete(keyword_string[0])
 p item_keywords
 
