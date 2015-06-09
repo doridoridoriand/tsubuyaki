@@ -3,24 +3,32 @@ require 'favrica_sns'
 
 module TweetSpecificKeywordHelper
   def generate_tweet_content
-    data = []
-    self.each do |entry|
-      data << "【#{entry['title']}】#{truncate_description(entry['description'])} #{entry['favrica_url']}"
+    hash = Hash.new {|h, e| h[e] = {}}
+    self.each_with_index do |entry, i|
+      hash[i][:tweet_string] = "【#{entry['title']}】#{truncate_description(entry['description'])} #{entry['favrica_url']}"
+      hash[i][:image] = entry['images'].map {|image| image['large_url']}.to_a
     end
-    data
+    hash
   end
 
   def generate_tweet_content_with_direct_link
-    data = []
-    self.each do |entry|
-      data << "【#{entry['title']}】#{truncate_description(entry['description'])} #{entry['stocks'][0]['item_url']}"
+    hash = Hash.new {|h, e| h[e] = {}}
+    self.each_with_index do |entry, i|
+      hash[i][:tweet_string] = "【#{entry['title']}】#{truncate_description(entry['description'])} #{entry['stocks'][0]['item_url']}"
+      hash[i][:image] = entry['images'].map {|image| image['large_url']}.to_a
     end
-    data
+    hash
   end
 
   private
 
   def truncate_description(string)
     string[FavricaSns::DESCRIPTION_TRUNCATE[0]..FavricaSns::DESCRIPTION_TRUNCATE[1]]
+  end
+
+  def images_array
+    self.each do |entry|
+
+    end
   end
 end
