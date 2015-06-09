@@ -53,6 +53,6 @@ begin
   logger.info('tweet end')
 rescue => error
   logger.info("keyword: #{OPTIONS[:keyword_en]} is not found in database")
-  logger.error("Or error occured because of :#{error.message}")
+  logger.error("Or error occured because of: #{error.message}")
 end
 
