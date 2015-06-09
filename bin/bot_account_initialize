@@ -8,14 +8,10 @@ require 'bot_account_helper'
 include BotAccountModule
 
 all_entries_count = BotAccount.all.count
-data = BotAccount.find(1)
 
-p data.api_client.user().screen_name
-
-#for i in 1..all_entries_count.to_i do
-#  bot_account = BotAccount.find(i.to_s)
-#  own_screen_name = bot_account.api_client.user().screen_name
-#  own_id = bot_account.api_client.user().id
-#  p own_screen_name
-#  p own_id
-#end
+for i in 1..all_entries_count.to_i do
+  bot_account = BotAccount.find(i.to_s)
+  own_screen_name = bot_account.api_client.user().screen_name
+  own_id = bot_account.api_client.user().id
+  bot_account.update(account_id: own_id, account_screen_name: own_screen_name)
+end
