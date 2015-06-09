@@ -23,6 +23,12 @@ module TweetSpecificKeywordHelper
     hash
   end
 
+  def hash_tags(source_keyword, item_keywords)
+    item_keywords.delete(source_keyword)
+    hash_keywords = item_keywords.map {|keyword| keyword = "##{keyword}"}
+    hash_keywords.sample
+  end
+
   private
 
   def truncate_description(string)
