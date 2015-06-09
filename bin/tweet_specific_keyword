@@ -38,18 +38,22 @@ begin
     rand = Random.new
     for i in 0..(OPTIONS[:number_of_tweet_times] - 1) do
       if (rand(0..1) == 1)
-        open(json_data.generate_tweet_content[i][:image].sample) do |data|
-          bot_account.api_client.update_with_media(json_data.generate_tweet_content[i][:tweet_string], data)
+        open(json_data.tweet_content[i][:image].sample) do |data|
+          bot_account.api_client.update_with_media(json_data.tweet_content[i][:tweet_string], data)
         end
-        logger.info("tweet with this text: #{json_data.generate_tweet_content[i][:tweet_string]}")
+        logger.info("tweet with this text: #{json_data.tweet_content[i][:tweet_string]}")
       else
-        open(json_data.generate_tweet_content_with_direct_link[i][:image].sample) do |data|
-          bot_account.api_client.update_with_media(json_data.generate_tweet_content_with_direct_link[i][:tweet_string], data)
+        open(json_data.tweet_content_with_direct_link[i][:image].sample) do |data|
+          bot_account.api_client.update_with_media(json_data.tweet_content_with_direct_link[i][:tweet_string], data)
         end
-        logger.info("tweet with this text: #{json_data.generate_tweet_content_with_direct_link[i][:tweet_string]}")
+        logger.info("tweet with this text: #{json_data.tweet_content_with_direct_link[i][:tweet_string]}")
       end
     end
   end
+
+  item_keywords = json_data.tweet_content[0][:item_keywords]
+  item_keywords.delete(keyword_string[0])
+  p item_keywords
 
   logger.info('tweet end')
 rescue => error
