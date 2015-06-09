@@ -24,7 +24,7 @@ raise OptionParser::MissingArgument unless OPTIONS[:number_of_tweet_times]
 logger = Logger.new(OPTIONS[:logfile] || STDOUT)
 logger.level = OPTIONS[:execute] ? Logger::INFO : Logger::DEBUG
 
-logger.info("searching in farvica.net with this keyword: #{OPTIONS[:keyword_en]}")
+logger.info("Searching in farvica.net with this keyword: #{OPTIONS[:keyword_en]}")
 
 begin
   keyword = FavricaKeyword.where(keyword_en: OPTIONS[:keyword_en])
@@ -53,6 +53,6 @@ begin
   logger.info('tweet end')
 rescue => error
   logger.info("keyword: #{OPTIONS[:keyword_en]} is not found in database")
-  logger.error("Or error occured because of : #{error.message}")
+  logger.error("Or error occured because of :#{error.message}")
 end
 
