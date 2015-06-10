@@ -3,16 +3,31 @@
 $: << File.expand_path(File.join(__FILE__, '..', '..', 'lib'))
 require 'favrica_sns'
 $: << File.expand_path(File.join(__FILE__, '..', '..', 'helper'))
+require 'tweet_specific_keyword_helper'
 require 'bot_account_helper'
 
+include TweetSpecificKeywordHelper
 include BotAccountModule
 
-all_bots_count = BotAccount.all.count
-#data = BotAccount.find(1)
+OPTIONS = {}
+OptionParser.new do |opt|
+  opt.on('-lis load_id_screen_name', '--load_id_screen_name') {|v| OPTIONS[:load_id_screen_name] = v}
+  opt.on('-sk sync_keywords',        '--sync_keywords')       {|v| OPTIONS[:sync_keywords]       = v}
+  opt.parse!(ARGV)
+end
 
-for i in 1..all_bots_count.to_i do
-  bot_account = BotAccount.find(i.to_s)
-  own_screen_name = bot_account.api_client.user().screen_name
-  own_id = bot_account.api_client.user().id
-  bot_account.update(account_id: own_id, account_screen_name: own_screen_name)
+all_bots_count = BotAccount.all.count
+
+if (OPTIONS[:load_id_screen_name])
+  for i in 1..all_bots_count.to_i do
+    bot_account = BotAccount.find(i)
+    bot_account.update(account_id: bot_account.api_client.user().id, account_screen_name: bot_account.api_client.user().screen_name)
+  end
+end
+
+if (OPTIONS[:sync_keywords])
+  for i in 1..all_bots_count do
+    bot_account = BotAccount.find(i)
+    bot_account.update(keyword_en: FavricaKeyword.find(i).keyword_en)
+  end
 end
