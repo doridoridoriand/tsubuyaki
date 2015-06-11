@@ -3,7 +3,12 @@ set :environment, :production
 env :PATH, ENV['PATH']
 job_type :rbenv_rake, %q!eval "$(rbenv init -)"; cd :path && :environment_variable=:environment bundle exec rake :task --silent :output!
 
-every :hour do
+#every :hour do
+#  command "/home/vagrant/works/tsubuyaki/bin/tweet_specific_keyword -k tshirt -n 3 -l /home/vagrant/works/tsubuyaki/log/tweet_specific_keyword"
+#end
+
+# 現状ではあまり:hourと代わり映えしないけど、細かく指定できる方がいいのでこちらで登録。あと夜つぶやいても仕方がない気がするので
+every 1.day, at: (6..23).to_a.map {|hour| hour = "#{hour}:00"} do
   command "/home/vagrant/works/tsubuyaki/bin/tweet_specific_keyword -k tshirt -n 3 -l /home/vagrant/works/tsubuyaki/log/tweet_specific_keyword"
 end
 
