@@ -9,7 +9,8 @@ job_type :rbenv_rake, %q!eval "$(rbenv init -)"; cd :path && :environment_variab
 
 # 現状ではあまり:hourと代わり映えしないけど、細かく指定できる方がいいのでこちらで登録。あと夜つぶやいても仕方がない気がするので
 every 1.day, at: (6..23).to_a.map {|hour| hour = "#{hour}:00"} do
-  command "/home/vagrant/works/tsubuyaki/bin/tweet_specific_keyword -k tshirt -n 3 -l /home/vagrant/works/tsubuyaki/log/tweet_specific_keyword"
+  # コマンド指定例
+  #command "/home/app/Works/tsubuyaki/bin/tweet_specific_keyword -k tshirt -n 3 -l /home/app/Works/tsubuyaki/log/tweet_specific_keyword -e"
 end
 
 #every 1.minute do
