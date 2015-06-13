@@ -1,4 +1,5 @@
 require 'active_record'
+require 'twitter'
 require 'cache_local'
 require 'yaml'
 require 'optparse'

@@ -1,7 +1,3 @@
-$: << File.expand_path(File.join(__FILE__, '..', '..', 'lib'))
-require 'favrica_sns'
-require 'twitter'
-
 class BotAccount < ActiveRecord::Base
   def api_client
     @api_client = Twitter::REST::Client.new do |config|
@@ -10,7 +6,6 @@ class BotAccount < ActiveRecord::Base
       config.access_token        = access_token
       config.access_token_secret = access_token_secret
     end
-    @api_client
   end
 
   def friend_ids
