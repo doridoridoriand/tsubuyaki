@@ -16,6 +16,13 @@ OptionParser.new do |opt|
 end
 
 keyword = FavricaKeyword.where(keyword_en: OPTIONS[:keyword_en])
+#item_data = PostedItem.new(id: 1, entry_favrica_id: '00112233', keyword_en: "koat")
+#item_data.save
+latest_id = PostedItem.all.count + 1
+#PostedItem.create(id: latest_id, entry_favrica_id: '00112233', keyword_en: "tshirt")
+
+
+
 #bot_account = BotAccount.where(keyword_en: OPTIONS[:keyword_en])
 keyword_string = []
 keyword.each do |node|
