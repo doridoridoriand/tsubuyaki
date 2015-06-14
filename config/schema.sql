@@ -23,3 +23,20 @@ create table `seed_accounts` (
   `account_id`          bigint(20)   unsigned,
   primary key(`id`)
 ) engine=InnoDB default charset=utf8;
+
+create table `favrica_entries` (
+  `id`               int(10)      unsigned not null,
+  `entry_favrica_id` varchar(255) not null,
+  `created_at`       varchar(255) not null,
+  `updated_at`       varchar(255) not null,
+  primary key(`id`),
+  index(`entry_favrica_id`)
+) engine=InnoDB default charset=utf8;
+
+create table `posted_entries` (
+  `id`               int(10)      unsigned not null,
+  `entry_favrica_id` varchar(255) not null,
+  `keyword_en`       varchar(255) not null,
+  `account_id`       bigint(20)   unsigned,
+  primary key(`id`)
+) engine=InnoDB default charset=utf8;
