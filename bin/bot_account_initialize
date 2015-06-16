@@ -13,21 +13,41 @@ OPTIONS = {}
 OptionParser.new do |opt|
   opt.on('-lis load_id_screen_name', '--load_id_screen_name') {|v| OPTIONS[:load_id_screen_name] = v}
   opt.on('-sk sync_keywords',        '--sync_keywords')       {|v| OPTIONS[:sync_keywords]       = v}
+  opt.on('-l logfile', '--logfile', String)                   {|v| OPTIONS[:sync_keywords]       = v}
   opt.parse!(ARGV)
 end
 
 all_bots_count = BotAccount.all.count
 
+logger = Logger.new(OPTIONS[:logfile] || STDOUT)
+logger.level = OPTIONS[:execute] ? Logger::INFO : Logger::DEBUG
+
+logger.info("Start to Initialize #{OPTIONS[:keyword_en]}")
+
 if (OPTIONS[:load_id_screen_name])
   for i in 1..all_bots_count.to_i do
-    bot_account = BotAccount.find(i)
-    bot_account.update(account_id: bot_account.api_client.user().id, account_screen_name: bot_account.api_client.user().screen_name)
+    begin
+      bot_account = BotAccount.find(i)
+      bot_account.update(account_id: bot_account.api_client.user().id, account_screen_name: bot_account.api_client.user().screen_name)
+      logger.info("#{OPTIONS[:keyword_en]} bot id and screen_name has detected.")
+    rescue => error
+      logger.error("Some error has occuerd Because of #{error.message}.")
+      next
+    end
   end
 end
 
 if (OPTIONS[:sync_keywords])
   for i in 1..all_bots_count do
-    bot_account = BotAccount.find(i)
-    bot_account.update(keyword_en: FavricaKeyword.find(i).keyword_en)
+    begin
+      bot_account = BotAccount.find(i)
+      bot_account.update(keyword_en: FavricaKeyword.find(i).keyword_en)
+      logger.info("#{OPTIONS[:keyword_en]} bot has synced.")
+    rescue => error
+      logger.error("Some error has occuerd because of #{error.message}.")
+      next
+    end
   end
 end
+
+logger.info('finish.')
