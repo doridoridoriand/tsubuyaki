@@ -34,6 +34,7 @@ begin
     source_keyword << node.keyword_ja
   end
   json_data = JSON.parse!(open(URI.encode("#{FavricaSns::FAVRICA_SEARCH_URL_ENDPOINT}#{source_keyword[0]}")).read)
+  json_data.shuffle!
   if (OPTIONS[:execute])
     rand = Random.new
     for i in 0..(OPTIONS[:number_of_tweet_times] - 1) do
