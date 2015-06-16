@@ -13,7 +13,7 @@ OPTIONS = {}
 OptionParser.new do |opt|
   opt.on('-lis load_id_screen_name', '--load_id_screen_name') {|v| OPTIONS[:load_id_screen_name] = v}
   opt.on('-sk sync_keywords',        '--sync_keywords')       {|v| OPTIONS[:sync_keywords]       = v}
-  opt.on('-l logfile', '--logfile', String)                   {|v| OPTIONS[:sync_keywords]       = v}
+  opt.on('-l logfile', '--logfile', String)                   {|v| OPTIONS[:logfile]             = v}
   opt.parse!(ARGV)
 end
 
