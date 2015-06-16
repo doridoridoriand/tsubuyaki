@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+
+$: << File.expand_path(File.join(__FILE__, '..', '..', 'lib'))
+require 'favrica_sns'
+$: << File.expand_path(File.join(__FILE__, '..', '..', 'helper'))
+require 'tweet_specific_keyword_helper'
+require 'bot_account_helper'
+
+include TweetSpecificKeywordHelper
+include BotAccountModule
+
+OPTIONS = {}
+OptionParser.new do |opt|
+  opt.on('-k keyword_en', '--keyword_en', String) {|v| OPTIONS[:keyword_en] = v}
+  opt.on('-n number_of_follow_users', '--number_of_follow_users', Integer) {|v| OPTIONS[:number_of_follow_users] = v}
+  opt.on('-l logfile', '--logifle', String) {|v| OPTIONS[:logfile] = v}
+  opt.on('-e', '--execute') {|v| OPTIONS[:execute] = v}
+  opt.parse!(ARGV)
+end
+raise OptionParser::MissingArgument unless OPTIONS[:prefecture_id]
+raise OptionParser::MissingArgument unless OPTIONS[:number_of_accounts]
+
+cache = CacheLocal::File.new(File.join(FavricaSns::CACHE_DIR, File.basename(__FILE__)))
+
+logger = Logger.new(OPTIONS[:logfile] || STDOUT)
+logger.level = OPTIONS[:execute] ? Logger::INFO : Logger::DEBUG
+
+logger.info("Start follow friend of mutual account at #{OPTIONS[:keyword_en]} bot")
+
+bot_account = BotAccount.find_by(keyword_en: OPTIONS[:keyword_en])
+mutual_account = MutualAccount
