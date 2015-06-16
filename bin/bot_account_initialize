@@ -2,18 +2,12 @@
 
 $: << File.expand_path(File.join(__FILE__, '..', '..', 'lib'))
 require 'favrica_sns'
-$: << File.expand_path(File.join(__FILE__, '..', '..', 'helper'))
-require 'tweet_specific_keyword_helper'
-require 'bot_account_helper'
-
-include TweetSpecificKeywordHelper
-include BotAccountModule
 
 OPTIONS = {}
+# 仕様変更をしたので一旦機能を削減した
 OptionParser.new do |opt|
-  opt.on('-lis load_id_screen_name', '--load_id_screen_name') {|v| OPTIONS[:load_id_screen_name] = v}
-  opt.on('-sk sync_keywords',        '--sync_keywords')       {|v| OPTIONS[:sync_keywords]       = v}
-  opt.on('-l logfile', '--logfile', String)                   {|v| OPTIONS[:logfile]             = v}
+  opt.on('-i id_screen_name', 'id_screen_name') {|v| OPTIONS[:id_screen_name] = v}
+  opt.on('-l logfile', '--logfile', String)     {|v| OPTIONS[:logfile]        = v}
   opt.parse!(ARGV)
 end
 
@@ -22,29 +16,15 @@ all_bots_count = BotAccount.all.count
 logger = Logger.new(OPTIONS[:logfile] || STDOUT)
 logger.level = Logger::INFO
 
-logger.info("Start to Initialize #{OPTIONS[:keyword_en]}")
-
-if (OPTIONS[:load_id_screen_name])
-  for i in 1..all_bots_count.to_i do
-    begin
-      bot_account = BotAccount.find(i)
-      bot_account.update(account_id: bot_account.api_client.user().id, account_screen_name: bot_account.api_client.user().screen_name)
-      logger.info("#{OPTIONS[:keyword_en]} bot id and screen_name has detected.")
-    rescue => error
-      logger.error("Some error has occuerd Because of #{error.message}.")
-      next
-    end
-  end
-end
-
-if (OPTIONS[:sync_keywords])
+if OPTIONS[:id_screen_name]
   for i in 1..all_bots_count do
     begin
       bot_account = BotAccount.find(i)
-      bot_account.update(keyword_en: FavricaKeyword.find(i).keyword_en)
-      logger.info("#{OPTIONS[:keyword_en]} bot has synced.")
+      bot_account_screen_name = bot_account.api_client.user().screen_name
+      bot_account.update(account_id: bot_account.api_client.user().id, account_screen_name: bot_account_screen_name)
+      logger.info("#{bot_account_screen_name} has detected in database.")
     rescue => error
-      logger.error("Some error has occuerd because of #{error.message}.")
+      logger.error("Some error has occuerd Because of #{error.message}.")
       next
     end
   end
