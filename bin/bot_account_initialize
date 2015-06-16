@@ -6,8 +6,8 @@ require 'favrica_sns'
 OPTIONS = {}
 # 仕様変更をしたので一旦機能を削減した
 OptionParser.new do |opt|
-  opt.on('-i id_screen_name', 'id_screen_name') {|v| OPTIONS[:id_screen_name] = v}
-  opt.on('-l logfile', '--logfile', String)     {|v| OPTIONS[:logfile]        = v}
+  opt.on('-i', '--id_screen_name')          {|v| OPTIONS[:id_screen_name] = v}
+  opt.on('-l logfile', '--logfile', String) {|v| OPTIONS[:logfile]        = v}
   opt.parse!(ARGV)
 end
 
