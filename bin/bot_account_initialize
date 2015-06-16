@@ -13,14 +13,14 @@ OPTIONS = {}
 OptionParser.new do |opt|
   opt.on('-lis load_id_screen_name', '--load_id_screen_name') {|v| OPTIONS[:load_id_screen_name] = v}
   opt.on('-sk sync_keywords',        '--sync_keywords')       {|v| OPTIONS[:sync_keywords]       = v}
-  opt.on('-l logfile', '--logfile', String)                   {|v| OPTIONS[:sync_keywords]       = v}
+  opt.on('-l logfile', '--logfile', String)                   {|v| OPTIONS[:logfile]             = v}
   opt.parse!(ARGV)
 end
 
 all_bots_count = BotAccount.all.count
 
 logger = Logger.new(OPTIONS[:logfile] || STDOUT)
-logger.level = OPTIONS[:execute] ? Logger::INFO : Logger::DEBUG
+logger.level = Logger::INFO
 
 logger.info("Start to Initialize #{OPTIONS[:keyword_en]}")
 
