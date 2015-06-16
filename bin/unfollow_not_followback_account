@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+
+$: << File.expand_path(File.join(__FILE__, '..', '..', 'lib'))
+require 'favrica_sns'
+$: << File.expand_path(File.join(__FILE__, '..', '..', 'helper'))
+require 'tweet_specific_keyword_helper'
+require 'bot_account_helper'
+
+include TweetSpecificKeywordHelper
+include BotAccountModule
+
+OPTIONS = {}
+OptionParser.new do |opt|
+  opt.on('-k keyword_en',        '--keyword_en',        String)  {|v| OPTIONS[:keyword_en]        = v}
+  opt.on('-n number_of_accunts', '--number_of_accunts', Integer) {|v| OPTIONS[:number_of_accunts] = v}
+  opt.on('-l logfile',           '--logfile',           String)  {|v| OPTIONS[:logfile]           = v}
+  opt.on('-e execute',           '--execute')                    {|v| OPTIONS[:execute]           = v}
+  opt.parse!(ARGV)
+end
+
+raise OptionParser::MissingArgument unless OPTIONS[:keyword_en]
+raise OptionParser::MissingArgument unless OPTIONS[:number_of_accunts]
+
+logger = Logger.new(OPTIONS || STDOUT)
+logger.level = OPTIONS[:execute] ? Logger::INFO : Logger::DEBUG
+
+logger.info("start unfollow at #{OPTIONS[:keyword_en]} bot")
+
+bot_account = BotAccount.find_by(keyword_en: OPTIONS[:keyword_en])
+
+not_followback_accounts = bot_account.friend_ids - bot_account.follower_ids
+unfollow_target_accounts = not_followback_accounts.shuffle[0..OPTIONS[:number_of_accunts] - 1]
+
+unfollow_target_accounts.each do |id|
+  if OPTIONS[:execute]
+    begin
+      bot_account.api_aclient.unfollow(id)
+      logger.info("unfollow #{id}")
+    rescue => exception
+      logger.error("fail to unfollow: #{id}, #{exception.message}")
+    end
+    logger.debug("unfollow: #{id}")
+  end
+end
+logger.info('finish.')
