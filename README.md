@@ -7,3 +7,6 @@
 - `bundle exec whenever --update-crontab`を実行してcronを出力&反映
 - 反映されているか`crontab -e`でファイルを開いて確認
 - 間違っていたりして反映を取り消したい(削除したい)場合は`bundle exec whenever --clear-crontab`
+
+# JSONのentryの性別選択方法
+`keyword_en`の末尾に__women,__menと入れることによって、JSONのentryに埋め込まれた性別の分岐させている
