@@ -118,5 +118,10 @@ every 1.day, at: time do
   command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k ring -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
   command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k swimsuit -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
   command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k tote-bag -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
+  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k backpack -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
+  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k traveling-bag -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
+  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k handbag -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
+  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k clutch-bag -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
+  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k gaucho-pants -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
   command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k dress-shoes -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
 end
