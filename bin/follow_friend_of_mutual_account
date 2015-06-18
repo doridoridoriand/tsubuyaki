@@ -20,12 +20,28 @@ end
 raise OptionParser::MissingArgument unless OPTIONS[:prefecture_id]
 raise OptionParser::MissingArgument unless OPTIONS[:number_of_accounts]
 
-cache = CacheLocal::File.new(File.join(FavricaSns::CACHE_DIR, File.basename(__FILE__)))
-
 logger = Logger.new(OPTIONS[:logfile] || STDOUT)
 logger.level = OPTIONS[:execute] ? Logger::INFO : Logger::DEBUG
 
 logger.info("Start follow friend of mutual account at #{OPTIONS[:keyword_en]} bot")
 
 bot_account = BotAccount.find_by(keyword_en: OPTIONS[:keyword_en])
-mutual_account = MutualAccount
+mutual_account_ids = MutualAccount.find_randomly.api_client.friend_ids.to_a
+
+follow_candidate_ids = mutual_account_ids - bot_account.friend_ids
+follow_target_account_ids = follow_candidate_ids.shuffle[0..OPTIONS[:number_of_follow_users] - 1]
+
+follow_target_account_ids.each do |id|
+  if OPTIONS[:execute]
+    begin
+      bot_account.api_client.follow(id)
+      logger.info("follow: #{id}")
+    rescue => error
+      logger.error("fail to follow: #{id}, Because of #{error.message}")
+      next
+    end
+  else
+    logger.debug("follow: #{id}")
+  end
+end
+logger.info('finish.')
