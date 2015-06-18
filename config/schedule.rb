@@ -39,6 +39,7 @@ every 1.day, at: "12:00" do
   command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k outdoor -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
   command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k iPhone-case -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
   command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k sneaker -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k one-piece -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
 end
 
 # 夜配信するボット
@@ -56,6 +57,7 @@ end
 every 1.day, at: "21:00" do
   command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k iPhone-case -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
   command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k sneaker -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k one-piece -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
 end
 
 # follow follower of seed account
