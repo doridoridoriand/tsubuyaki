@@ -124,4 +124,8 @@ every 1.day, at: time do
   command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k clutch-bag -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
   command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k gaucho-pants -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
   command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k dress-shoes -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
+  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k hat -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
+  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k peplum -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
+  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k off-shoulder -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
+  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k linen -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
 end
