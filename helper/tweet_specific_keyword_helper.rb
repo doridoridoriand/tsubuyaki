@@ -34,6 +34,23 @@ module TweetSpecificKeywordHelper
     return_array_data
   end
 
+  def with_gender_adjusted(target_gender)
+    counter = 0
+    if target_gender
+      modified = []
+      self.each_with_index do |entry, i|
+        #modified_hash[i] = entry if entry['groups'].map {|id| id['name']}.join.include?(target_gender)
+        if (entry['groups'].map {|id| id['name']}.join.include?(target_gender))
+          modified << entry
+          counter += 1
+        end
+      end
+    else
+      modified = self
+    end
+    modified
+  end
+
   private
 
   def truncate_description(string)

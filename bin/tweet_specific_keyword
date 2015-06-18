@@ -26,6 +26,12 @@ logger.level = OPTIONS[:execute] ? Logger::INFO : Logger::DEBUG
 
 logger.info("Searching in farvica.net with this keyword: #{OPTIONS[:keyword_en]}")
 
+if OPTIONS[:keyword_en].include?('__')
+  gender = OPTIONS[:keyword_en].split('__')[1]
+else
+  gender = ''
+end
+
 begin
   keyword = FavricaKeyword.where(keyword_en: OPTIONS[:keyword_en])
   bot_account = BotAccount.find_by(keyword_en: OPTIONS[:keyword_en])
@@ -35,6 +41,7 @@ begin
   end
   json_data = JSON.parse!(open(URI.encode("#{FavricaSns::FAVRICA_SEARCH_URL_ENDPOINT}#{source_keyword[0]}")).read)
   json_data.shuffle!
+  json_data = json_data.with_gender_adjusted(gender)
   if (OPTIONS[:execute])
     rand = Random.new
     for i in 0..(OPTIONS[:number_of_tweet_times] - 1) do
