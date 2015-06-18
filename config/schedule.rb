@@ -59,13 +59,22 @@ every 1.day, at: "21:00" do
 end
 
 # follow follower of seed account
-every :monday, at: time  do
+every :monday, at: time do
 end
 
 # follow mutual accounts
-every :wednesday, at: time  do
+every :wednesday, at: time do
 end
 
 # unfollow not followback account
-every :saturday, at: time  do
+every 1.day, at: time do
+  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k tshirt -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
+  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k shirt -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
+  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k polo-shirt -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
+  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k vest -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
+  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k parka -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
+  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k sweat -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
+  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k outdoor -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
+  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k iPhone-case -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
+  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k sneaker -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
 end

@@ -14,14 +14,14 @@ OptionParser.new do |opt|
   opt.on('-k keyword_en',        '--keyword_en',        String)  {|v| OPTIONS[:keyword_en]        = v}
   opt.on('-n number_of_accunts', '--number_of_accunts', Integer) {|v| OPTIONS[:number_of_accunts] = v}
   opt.on('-l logfile',           '--logfile',           String)  {|v| OPTIONS[:logfile]           = v}
-  opt.on('-e execute',           '--execute')                    {|v| OPTIONS[:execute]           = v}
+  opt.on('-e',                   '--execute')                    {|v| OPTIONS[:execute]           = v}
   opt.parse!(ARGV)
 end
 
 raise OptionParser::MissingArgument unless OPTIONS[:keyword_en]
 raise OptionParser::MissingArgument unless OPTIONS[:number_of_accunts]
 
-logger = Logger.new(OPTIONS || STDOUT)
+logger = Logger.new(OPTIONS[:logfile] || STDOUT)
 logger.level = OPTIONS[:execute] ? Logger::INFO : Logger::DEBUG
 
 logger.info("start unfollow at #{OPTIONS[:keyword_en]} bot")
@@ -34,7 +34,7 @@ unfollow_target_accounts = not_followback_accounts.shuffle[0..OPTIONS[:number_of
 unfollow_target_accounts.each do |id|
   if OPTIONS[:execute]
     begin
-      bot_account.api_aclient.unfollow(id)
+      bot_account.api_client.unfollow(id)
       logger.info("unfollow #{id}")
     rescue => exception
       logger.error("fail to unfollow: #{id}, #{exception.message}")
