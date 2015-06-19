@@ -62,6 +62,5 @@ begin
 rescue => error
   logger.info("keyword: #{OPTIONS[:keyword_en]} is not found in database")
   logger.error("Or error occured because of: #{error.message}")
-  next
 end
 
