@@ -22,9 +22,13 @@ time2 = []
     end
   end
 end
-# 現状ではあまり:hourと代わり映えしないけど、細かく指定できる方がいいのでこちらで登録。あと夜つぶやいても仕方がない気がするので
-# これだとただのスパムボットに成り下がっているので一旦すべて廃止
-every 1.day, at: (6..23).to_a.map {|hour| hour = "#{'%02d' % hour}:00"} do
+
+# 毎時7回分をランダムに選択して実行するタスク用
+random_times = []
+(0..23).to_a.each do |hour|
+  (0..59).to_a.sample(7).each do |minute|
+    random_times << "#{'%02d' % hour}:#{'%02d' % minute}"
+  end
 end
 
 # 朝配信するボット
@@ -78,60 +82,14 @@ every :wednesday, at: time do
 end
 
 # unfollow not followback account
-every 1.day, at: time do
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k tshirt -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k shirt -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k polo-shirt -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k vest -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k parka -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k sweat -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k outdoor -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k iPhone-case -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k sneaker -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-
-  # またつぶやかせていないが、今後使う予定なのでとりあえずユーザー数を適切にする
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k knit -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k cardigan -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k ensemble -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k jersey -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k tanktop -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k camisole -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k tubetop -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k jacket -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k blouson -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k down -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k mountain-parka -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k skirt -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k pants -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k denim -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k sandal -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k pumps -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
+bot_keyword_en = %w(tshirt shirt polo-shirt vest parka sweat outdoor iPhone-case sneaker knit cardigan ensemble jersey tanktop tubetop jacket blouson down mountain-parka skirt pants denim sandal pumps boots booties deck-shoes rain-shoes all-in-one one-piece party-dress suit-jacket suit-vest suit-pants suit-skirt setup necktie bra shorts-panties mens-pants necklace pierced-earrings ring swimsuit tote-bag backpack traveling-bag)
+bot_keyword_en.each do |keyword|
+  every 1.day, at: time do
+    command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k #{keyword} -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
+  end
 end
 
 every 1.day, at: time2 do
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k boots -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k booties -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k deck-shoes -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k rain-shoes -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k all-in-one -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k one-piece -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k party-dress -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k suit-jacket -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k suit-vest -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k suit-pants -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k suit-skirt -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k setup -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k necktie -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k bra -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k shorts-panties -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k mens-pants -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k necklace -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k pierced-earrings -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k ring -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k swimsuit -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k tote-bag -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k backpack -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k traveling-bag -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
 #  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k handbag -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
 #  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k clutch-bag -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
 #  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k gaucho-pants -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
@@ -141,3 +99,4 @@ every 1.day, at: time2 do
 #  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k off-shoulder -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
 #  command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k linen -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
 end
+
