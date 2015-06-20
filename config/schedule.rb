@@ -84,7 +84,7 @@ end
 # unfollow not followback account
 bot_keyword_en = %w(tshirt shirt polo-shirt vest parka sweat outdoor iPhone-case sneaker knit cardigan ensemble jersey tanktop tubetop jacket blouson down mountain-parka skirt pants denim sandal pumps boots booties deck-shoes rain-shoes all-in-one one-piece party-dress suit-jacket suit-vest suit-pants suit-skirt setup necktie bra shorts-panties mens-pants necklace pierced-earrings ring swimsuit tote-bag backpack traveling-bag)
 bot_keyword_en.each do |keyword|
-  every 1.day, at: time do
+  every 1.day, at: random_times do
     command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k #{keyword} -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
   end
 end
