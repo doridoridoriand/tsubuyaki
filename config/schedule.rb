@@ -52,7 +52,9 @@ every 1.day, at: "12:00" do
   command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k outdoor -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
   command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k iPhone-case -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
   command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k sneaker -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k one-piece -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k sandal__WOMEN -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k swimsuit__WOMEN -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k one-piece__WOMEN -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
 end
 
 # 夜配信するボット
@@ -64,13 +66,15 @@ every 1.day, at: "18:25" do
   command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k parka -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
   command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k sweat -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
   command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k outdoor -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k sandal__WOMEN -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k swimsuit__WOMEN -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k one-piece__WOMEN -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
 end
 
 # 夜の遅い時間帯に配信するボット
 every 1.day, at: "21:00" do
   command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k iPhone-case -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
   command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k sneaker -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k one-piece -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
 end
 
 # follow follower of seed account
@@ -82,7 +86,7 @@ every :wednesday, at: time do
 end
 
 # unfollow not followback account
-bot_keyword_en = %w(tshirt shirt polo-shirt vest parka sweat outdoor iPhone-case sneaker knit cardigan ensemble jersey tanktop tubetop jacket blouson down mountain-parka skirt pants denim sandal pumps boots booties deck-shoes rain-shoes all-in-one one-piece party-dress suit-jacket suit-vest suit-pants suit-skirt setup necktie bra shorts-panties mens-pants necklace pierced-earrings ring swimsuit tote-bag backpack traveling-bag)
+bot_keyword_en = %w(tshirt shirt polo-shirt vest parka sweat outdoor iPhone-case sneaker knit cardigan ensemble jersey tanktop tubetop jacket blouson down mountain-parka skirt pants denim sandal__WOMEN pumps boots booties deck-shoes rain-shoes all-in-one one-piece__WOMEN party-dress suit-jacket suit-vest suit-pants suit-skirt setup necktie bra shorts-panties mens-pants necklace pierced-earrings ring swimsuit__WOMEN tote-bag backpack traveling-bag)
 bot_keyword_en.each do |keyword|
   every 1.day, at: random_times do
     command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k #{keyword} -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
