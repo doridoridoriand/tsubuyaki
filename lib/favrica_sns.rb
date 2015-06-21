@@ -10,7 +10,7 @@ require 'uri'
 require 'bot_account'
 require 'seed_account'
 require 'favrica_keyword'
-require 'posted_item'
+require 'bot_account_follow_follower'
 require 'favrica_item'
 
 db_config = YAML.load_file(File.expand_path(File.join(__FILE__, '..', '..', 'config', 'database.yml')))
@@ -22,4 +22,5 @@ module FavricaSns
   FAVRICA_SEARCH_URL_ENDPOINT = 'https://favrica.net/api/v3/items/search?text='
   FAVRICA_ITEM_ENDPOINT = FAVRICA_SEARCH_URL_ENDPOINT.split('search')[0]
   DESCRIPTION_TRUNCATE = [0, 30]
+  CREDENTIAL_STORE_FILE = 'credential-oauth2.json'
 end
