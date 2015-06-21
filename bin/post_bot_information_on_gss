@@ -9,7 +9,6 @@ require 'google_drive'
 $: << File.expand_path(File.join(__FILE__, '..', '..', 'lib'))
 require 'favrica_sns'
 
-
 def client
   client = Google::APIClient.new(application_name: 'Spreadsheet Post Man', application_version: '1.0')
 
@@ -18,13 +17,13 @@ def client
   if file_storage.authorization.nil?
     client_secrets = Google::APIClient::ClientSecrets.load('../config/client_secrets.json')
     auth_flow = Google::APIClient::InstalledAppFlow.new(
-      :client_id => client_secrets.client_id,
-      :client_secret => client_secrets.client_secret,
-      :scope => %w(
-            https://www.googleapis.com/auth/drive
-            https://docs.google.com/feeds/
-            https://docs.googleusercontent.com/
-            https://spreadsheets.google.com/feeds/
+      client_id:     client_secrets.client_id,
+      client_secret: client_secrets.client_secret,
+      scope:         %w(
+                     https://www.googleapis.com/auth/drive
+                     https://docs.google.com/feeds/
+                     https://docs.googleusercontent.com/
+                     https://spreadsheets.google.com/feeds/
       ),
     )
     client.authorization = auth_flow.authorize(file_storage)
@@ -34,9 +33,46 @@ def client
   client
 end
 
+# フォロー・フォロワー数取得&DB保存
+bot_account = BotAccount.all
+bot_account.each_with_index do |bot, i|
+  begin
+    BotAccountFollowFollower.create(id: i, keyword_en: bot.keyword_en, friend: bot.friend_ids.count, follower: bot.follower_ids.count)
+  rescue
+    bot_information = BotAccountFollowFollower.find(i)
+    bot_information.update(friend: bot.friend_ids.count, follower: bot.follower_ids.count)
+  rescue
+    next
+  end
+end
+
+# Google DriveAPIインスタンス生成
 api_client = client
+# セッション生成
 session = GoogleDrive.login_with_oauth(api_client.authorization.access_token)
 
+# スプレッドシートセッション生成
 work_sheet = session.spreadsheet_by_key("1QBuucTc3R-0KMWII1YTxLH9y6oeWvnG5HvDZbQQKz_Y").worksheets[0]
-work_sheet[10, 1] = 'chinko'
+data_time = Time.now
+cell_items = {A: 'アカウントid',
+              B: 'つぶやく対象のキーワード',
+              C: 'アカウントのスクリーンネーム',
+              D: "フォロー数 (データ取得日時: #{data_time.strftime("%Y-%m-%d")})",
+              E: "フォロワー数 (データ取得日時: #{data_time.strftime("%Y-%m-%d")})",
+              F: 'アカウントのTwitterページ'
+}
+
+work_sheet.update_cells(1, 1, [cell_items.values])
+
+bot_account.each_with_index do |bot, i|
+  favrica_keyword = FavricaKeyword.where(keyword_en: bot.keyword_en)
+  bot_information = BotAccountFollowFollower.find_by(keyword_en: bot.keyword_en)
+  work_sheet[i + 2, 1] = bot.account_id
+  work_sheet[i + 2, 2] = favrica_keyword.map {|node| node.keyword_ja}[0] ? favrica_keyword.map {|node| node.keyword_ja}[0] : 'キーワード未設定(未割り当てボット)'
+  work_sheet[i + 2, 3] = bot.account_screen_name
+  work_sheet[i + 2, 4] = bot_information.friend
+  work_sheet[i + 2, 5] = bot_information.follower
+  work_sheet[i + 2, 6] = "http://twitter.com/#{bot.account_screen_name}"
+end
 work_sheet.save
+
