@@ -23,14 +23,6 @@ time2 = []
   end
 end
 
-# 毎時7回分をランダムに選択して実行するタスク用
-random_times = []
-(0..23).to_a.each do |hour|
-  (0..59).to_a.sample(7).each do |minute|
-    random_times << "#{'%02d' % hour}:#{'%02d' % minute}"
-  end
-end
-
 # 朝配信するボット
 every 1.day, at: "06:30" do
   command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k tshirt -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
@@ -78,7 +70,6 @@ end
 every 1.day, at: "21:00" do
   command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k iPhone-case -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
   command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k sneaker -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k gaucho-pants__WOMEN -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
   command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k hat -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
 end
 
@@ -93,6 +84,12 @@ end
 # unfollow not followback account
 bot_keyword_en = %w(tshirt shirt polo-shirt vest parka sweat outdoor iPhone-case sneaker knit cardigan ensemble jersey tanktop tubetop jacket blouson down mountain-parka skirt pants denim sandal__WOMEN pumps boots booties deck-shoes rain-shoes all-in-one one-piece__WOMEN party-dress suit-jacket suit-vest suit-pants suit-skirt setup necktie bra shorts-panties mens-pants necklace pierced-earrings ring swimsuit__WOMEN tote-bag backpack traveling-bag gaucho-pants__WOMEN hat handbag clutch-bag)
 bot_keyword_en.each do |keyword|
+  random_times = []
+  (0..23).to_a.each do |hour|
+    (0..59).to_a.sample(7).each do |minute|
+      random_times << "#{'%02d' % hour}:#{'%02d' % minute}"
+    end
+  end
   every 1.day, at: random_times do
     command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k #{keyword} -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
   end
