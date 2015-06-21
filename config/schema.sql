@@ -40,3 +40,11 @@ create table `posted_items` (
   `account_id`       bigint(20)   unsigned,
   primary key(`id`)
 ) engine=InnoDB default charset=utf8;
+
+create table `bot_account_follow_followers` (
+  `id`         int(10)      unsigned not null,
+  `keyword_en` varchar(255) not null,
+  `frined`     bigint(20)   unsigned,
+  `follower`   bigint(20)   unsigned,
+  primary key(`id`)
+) engine=InnoDB default charset=utf8;
