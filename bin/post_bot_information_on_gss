@@ -15,7 +15,7 @@ def client
   file_storage = Google::APIClient::FileStorage.new(FavricaSns::CREDENTIAL_STORE_FILE)
 
   if file_storage.authorization.nil?
-    client_secrets = Google::APIClient::ClientSecrets.load('../config/client_secrets.json')
+    client_secrets = Google::APIClient::ClientSecrets.load(FavricaSns::OAUTH_SOURCE_FILE)
     auth_flow = Google::APIClient::InstalledAppFlow.new(
       client_id:     client_secrets.client_id,
       client_secret: client_secrets.client_secret,

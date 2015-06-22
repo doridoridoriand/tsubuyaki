@@ -22,5 +22,6 @@ module FavricaSns
   FAVRICA_SEARCH_URL_ENDPOINT = 'https://favrica.net/api/v3/items/search?text='
   FAVRICA_ITEM_ENDPOINT = FAVRICA_SEARCH_URL_ENDPOINT.split('search')[0]
   DESCRIPTION_TRUNCATE = [0, 30]
-  CREDENTIAL_STORE_FILE = 'credential-oauth2.json'
+  CREDENTIAL_STORE_FILE = '../tmp/credential-oauth2.json'
+  OAUTH_SOURCE_FILE = '../config/client_secrets.json'
 end
