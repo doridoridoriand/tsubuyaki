@@ -8,6 +8,18 @@ class BotAccount < ActiveRecord::Base
     end
   end
 
+  def rate_limit
+    api_client.__send__(:perform_get, '/1.1/application/rate_limit_status.json')
+  end
+
+  def followers_rate_limit_remaining
+    rate_limit[:resources][:followers].values[0][:remaining]
+  end
+
+  def followers_rate_limit_reset_time
+    rate_limit[:resources][:followers].values[0][:reset]
+  end
+
   def friend_ids
     api_client.friend_ids.to_a
   end
