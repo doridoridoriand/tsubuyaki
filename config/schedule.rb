@@ -91,7 +91,7 @@ bot_keyword_en.each do |keyword|
     end
   end
   every 1.day, at: random_times do
-    command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k #{keyword} -n 5 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
+    command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k #{keyword} -n 8 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
   end
 end
 
