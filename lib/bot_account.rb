@@ -8,6 +8,10 @@ class BotAccount < ActiveRecord::Base
     end
   end
 
+  def late_limit
+    api_client.__send__(:perform_get, '/1.1/application/rate_limit_status.json')
+  end
+
   def friend_ids
     api_client.friend_ids.to_a
   end
