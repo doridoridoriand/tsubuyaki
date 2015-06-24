@@ -28,7 +28,7 @@ logger.info("Start follow follower of seed at #{OPTIONS[:keyword_en]} bot.")
 
 bot_account = BotAccount.find_by(keyword_en: OPTIONS[:keyword_en])
 seed_accouunt = SeedAccount.find_by(keyword_en: OPTIONS[:keyword_en])
-random = Random.new
+random = Random.new(3600 * 24 * 6)
 
 all_seed_account_followers_id = []
 seed_accouunt.each do |seed_accouunt|
@@ -37,9 +37,9 @@ seed_accouunt.each do |seed_accouunt|
     begin
       log.info("get follower ids: #{seed_accouunt.name}")
       seed_accouunt_followers_id = bot_account.api_client.follower_ids(seed_accouunt.name).to_a
-      cache.set("follower_ids_of_#{seed_accouunt.name}", seed_accouunt_followers_id, 3600 * 24 + random(3600 + 24 * 7))
+      cache.set("follower_ids_of_#{seed_accouunt.name}", seed_accouunt_followers_id, 3600 * 24 + random)
     rescue => error
-      log.error("fail to get follower ids: #{seed_accouunt.name}, #{execption.message}")
+      log.error("fail to get follower ids: #{seed_accouunt.name}, #{error.message}")
     end
   end
   all_seed_account_followers_id.concat(seed_accouunt_followers_id)

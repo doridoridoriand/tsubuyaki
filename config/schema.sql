@@ -41,7 +41,7 @@ create table `bot_rate_limits` (
   primary key(`id`)
 ) engine=InnoDB default charset=utf8;
 
-create table 'bot_followers' (
+create table `bot_followers` (
   `id`                  int(10)      unsigned not null,
   `keyword_en`          varchar(255) not null,
   `bot_account_id`      bigint(20)   unsigned,
