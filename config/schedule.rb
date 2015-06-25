@@ -86,7 +86,7 @@ every 1.day, at: "21:00" do
 end
 
 # follow follower of seed account
-bot_keyword_en = %w(tshirt shirt polo-shirt vest parka sweat outdoor iPhone-case sneaker sandal__WOMEN one-piece__WOMEN swimsuit__WOMEN gaucho-pants__WOMEN)
+bot_keyword_en = %w(tshirt shirt polo-shirt vest parka sweat outdoor iPhone-case sneaker sandal__WOMEN one-piece__WOMEN swimsuit__WOMEN gaucho-pants__WOMEN hat peplum off-shoulder linen bra shorts-panties cardigan)
 bot_keyword_en.each do |keyword|
   random_times = []
   (0..22).to_a.each do |hour|
