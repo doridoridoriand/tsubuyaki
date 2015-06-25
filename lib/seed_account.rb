@@ -1,2 +1,2 @@
-class Seed_Account < ActiveRecord::Base
+class SeedAccount < ActiveRecord::Base
 end
