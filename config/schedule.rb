@@ -83,7 +83,7 @@ bot_keyword_en.each do |keyword|
     end
   end
   every 1.day, at: random_times do
-    command "/home/dorian/Works/tsubuyaki/bin/follow_follower_of_seed_account -k #{keyword} -n 8 -l /home/dorian/Works/tsubuyaki/log/follow_follower_of_seed_account -e"
+    command "/home/dorian/Works/tsubuyaki/bin/follow_follower_of_seed_account -k #{keyword} -n 3 -l /home/dorian/Works/tsubuyaki/log/follow_follower_of_seed_account -e"
   end
 end
 
