@@ -78,7 +78,7 @@ bot_keyword_en = %w(tshirt shirt polo-shirt vest parka sweat outdoor iPhone-case
 bot_keyword_en.each do |keyword|
   random_times = []
   (0..22).to_a.each do |hour|
-    (0..59).to_a.sample(2).each do |minute|
+    (0..59).to_a.sample.each do |minute|
       random_times << "#{'%02d' % hour}:#{'%02d' % minute}"
     end
   end
@@ -92,18 +92,19 @@ every :wednesday, at: time do
 end
 
 # unfollow not followback account
+bot_keyword_en = %w(coatlovers)
 #bot_keyword_en = %w(tshirt shirt polo-shirt vest parka sweat outdoor iPhone-case sneaker knit cardigan ensemble jersey tanktop tubetop jacket blouson down mountain-parka skirt pants denim sandal__WOMEN pumps boots booties deck-shoes rain-shoes all-in-one one-piece__WOMEN party-dress suit-jacket suit-vest suit-pants suit-skirt setup necktie bra shorts-panties mens-pants necklace pierced-earrings ring swimsuit__WOMEN tote-bag backpack traveling-bag gaucho-pants__WOMEN hat handbag clutch-bag dress-shoes peplum off-shoulder linen favrica_sns_not_connected_01 favrica_sns_not_connected_02 favrica_sns_not_connected_03 favrica_sns_not_connected_10 favrica_sns_not_connected_11 favrica_sns_not_connected_12 favrica_sns_not_connected_13 favrica_sns_not_connected_14 favrica_sns_not_connected_15 favrica_sns_not_connected_16 favrica_sns_not_connected_17 favrica_sns_not_connected_18 favrica_sns_not_connected_19 favrica_sns_not_connected_20 favrica_sns_not_connected_21 favrica_sns_not_connected_22 favrica_sns_not_connected_23 favrica_sns_not_connected_24 favrica_sns_not_connected_25 favrica_sns_not_connected_26 favrica_sns_not_connected_27 favrica_sns_not_connected_28 favrica_sns_not_connected_29 favrica_sns_not_connected_30 favrica_sns_not_connected_31)
-#bot_keyword_en.each do |keyword|
-#  random_times = []
-#  (0..22).to_a.each do |hour|
-#    (0..59).to_a.sample(7).each do |minute|
-#      random_times << "#{'%02d' % hour}:#{'%02d' % minute}"
-#    end
-#  end
-#  every 1.day, at: random_times do
-#    command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k #{keyword} -n 8 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
-#  end
-#end
+bot_keyword_en.each do |keyword|
+  random_times = []
+  (0..22).to_a.each do |hour|
+    (0..59).to_a.sample(7).each do |minute|
+      random_times << "#{'%02d' % hour}:#{'%02d' % minute}"
+    end
+  end
+  every 1.day, at: random_times do
+    command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k #{keyword} -n 8 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
+  end
+end
 
 # ボット用Goolge Docs更新タスク
 every 1.day, at: "23:30" do
