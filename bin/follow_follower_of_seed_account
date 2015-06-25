@@ -21,38 +21,38 @@ end
 raise OptionParser::MissingArgument unless OPTIONS[:keyword_en]
 raise OptionParser::MissingArgument unless OPTIONS[:number_of_follow_users]
 
+cache = CacheLocal::File.new(File.join(FavricaSns::CACHE_DIR, File.basename(__FILE__)))
+
 logger = Logger.new(OPTIONS[:logfile] || STDOUT)
 logger.level = OPTIONS[:execute] ? Logger::INFO : Logger::DEBUG
 
 logger.info("Start follow follower of seed at #{OPTIONS[:keyword_en]} bot.")
 
 bot_account = BotAccount.find_by(keyword_en: OPTIONS[:keyword_en])
-seed_accouunt = SeedAccount.find_by(keyword_en: OPTIONS[:keyword_en])
-random = Random.new
+seed_account = SeedAccount.all.sample
 
 all_seed_account_followers_id = []
-seed_accouunt.each do |seed_accouunt|
-  seed_accouunt_followers_id = cache.get("follower_ids_of#{seed_account.name}")
-  if !seed_accouunt_followers_id
-    begin
-      log.info("get follower ids: #{seed_accouunt.name}")
-      seed_accouunt_followers_id = bot_account.api_client.follower_ids(seed_accouunt.name).to_a
-      cache.set("follower_ids_of_#{seed_accouunt.name}", seed_accouunt_followers_id, 3600 * 24 + random(3600 + 24 * 7))
-    rescue => error
-      log.error("fail to get follower ids: #{seed_accouunt.name}, #{execption.message}")
-    end
+seed_account_followers_id = cache.get("follower_ids_of#{seed_account.account_screen_name}")
+if !seed_account_followers_id
+  begin
+    logger.info("get follower ids: #{seed_account.account_screen_name}")
+    seed_account_followers_id = bot_account.api_client.follower_ids(seed_account.account_screen_name).to_a
+    cache.set("follower_ids_of_#{seed_account.account_screen_name}", seed_account_followers_id, 3600 * 24 + rand(3600 * 24 * 6))
+  rescue => error
+    logger.error("fail to get follower ids: #{seed_account.account_screen_name}, #{error.message}")
   end
-  all_seed_account_followers_id.concat(seed_accouunt_followers_id)
 end
+all_seed_account_followers_id.concat(seed_account_followers_id)
 all_seed_account_followers_id.uniq!
 
 follow_candidate_account_ids = all_seed_account_followers_id - bot_account.friend_ids
-follow_target_account_ids = follow_candidate_account_ids.shuffle[0..OPTIONS[:number_of_accounts] - 1]
+follow_target_account_ids = follow_candidate_account_ids.shuffle[0..OPTIONS[:number_of_follow_users] - 1]
 
 if OPTIONS[:execute]
   follow_target_account_ids.each do |follow_taget_account_id|
     begin
       bot_account.api_client.follow(follow_taget_account_id)
+      logger.info("follow: #{follow_taget_account_id}")
     rescue => error
       logger.error("fail to follow: #{follow_taget_account_id}, #{error.message}")
     end
