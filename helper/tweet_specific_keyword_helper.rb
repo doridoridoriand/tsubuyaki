@@ -6,9 +6,10 @@ module TweetSpecificKeywordHelper
   def tweet_content
     hash = Hash.new {|h, e| h[e] = {}}
     self.each_with_index do |entry, i|
-      hash[i][:tweet_string] = "【#{entry['title']}】#{truncate_description(entry['description'])} #{entry['favrica_url']}"
-      hash[i][:image] = entry['images'].map {|image| image['large_url']}.to_a.uniq
+      hash[i][:tweet_string]  = "【#{entry['title']}】#{truncate_description(entry['description'])} #{entry['favrica_url']}"
+      hash[i][:image]         = entry['images'].map {|image| image['large_url']}.to_a.uniq
       hash[i][:item_keywords] = item_keywords(entry['id'])
+      hash[i][:brand_name]    = entry['brand']['name']
     end
     hash
   end
@@ -16,9 +17,10 @@ module TweetSpecificKeywordHelper
   def tweet_content_with_direct_link
     hash = Hash.new {|h, e| h[e] = {}}
     self.each_with_index do |entry, i|
-      hash[i][:tweet_string] = "【#{entry['title']}】#{truncate_description(entry['description'])} #{entry['stocks'][0]['item_url']}"
-      hash[i][:image] = entry['images'].map {|image| image['large_url']}.to_a.uniq
+      hash[i][:tweet_string]  = "【#{entry['title']}】#{truncate_description(entry['description'])} #{entry['stocks'][0]['item_url']}"
+      hash[i][:image]         = entry['images'].map {|image| image['large_url']}.to_a.uniq
       hash[i][:item_keywords] = item_keywords(entry['id'])
+      hash[i][:brand_name]    = entry['brand']['name']
     end
     hash
   end
