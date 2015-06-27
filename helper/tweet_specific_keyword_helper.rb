@@ -43,7 +43,6 @@ module TweetSpecificKeywordHelper
     if target_gender
       modified = []
       self.each_with_index do |entry, i|
-        #modified_hash[i] = entry if entry['groups'].map {|id| id['name']}.join.include?(target_gender)
         if (entry['groups'].map {|id| id['name']}.join.include?(target_gender))
           modified << entry
           counter += 1
