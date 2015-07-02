@@ -13,7 +13,7 @@ OPTIONS = {}
 OptionParser.new do |opt|
   opt.on('-k keyword', '--keyword_en', String)  {|v| OPTIONS[:keyword_en]           = v}
   opt.on('-n number_of_post_times',    Integer) {|v| OPTIONS[:number_of_post_times] = v}
-  opt.on('-b button_place',            Integer) {|v| OPTIONS[:button_place]         = v}
+  #opt.on('-b button_place',            Integer) {|v| OPTIONS[:button_place]         = v}
   opt.on('-l logfile', '--logfile',    String)  {|v| OPTIONS[:logfile]              = v}
   opt.on('-e',         '--execute')             {|v| OPTIONS[:execute]              = v}
   opt.parse!(ARGV)
@@ -21,7 +21,7 @@ end
 
 raise OptionParser::MissingArgment unless OPTIONS[:keyword_en]
 raise OptionParser::MissingArgment unless OPTIONS[:number_of_post_times]
-raise OptionParser::MissingArgment unless OPTIONS[:button_place]
+#raise OptionParser::MissingArgment unless OPTIONS[:button_place]
 
 logger = Logger.new(OPTIONS[:logfile] || STDOUT)
 logger.level = OPTIONS[:execute] ? Logger::INFO : Logger::DEBUG
