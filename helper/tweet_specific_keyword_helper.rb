@@ -6,11 +6,13 @@ module TweetSpecificKeywordHelper
   def tweet_content
     hash = Hash.new {|h, e| h[e] = {}}
     self.each_with_index do |entry, i|
-      hash[i][:tweet_description]  = "【#{entry['title']}】#{truncate_description(entry['description'])} #{entry['favrica_url']}"
-      hash[i][:tweet_description_with_brand]  = "【#{entry['title']}】#{entry['brand']['name']} #{entry['favrica_url']}"
-      hash[i][:image]         = entry['images'].map {|image| image['large_url']}.to_a.uniq
-      hash[i][:item_keywords] = item_keywords(entry['id'])
-      hash[i][:brand_name]    = entry['brand']['name']
+      hash[i][:tweet_description]                = "【#{entry['title']}】#{truncate_description(entry['description'])} #{entry['favrica_url']}"
+      hash[i][:tweet_description_with_brand]     = "【#{entry['title']}】#{entry['brand']['name']} #{entry['favrica_url']}"
+      hash[i][:tweet_description_no_favrica_url] = "【#{entry['title']}】#{truncate_description(entry['description'])}"
+      hash[i][:favrica_url]                      = entry['favrica_url']
+      hash[i][:image]                            = entry['images'].map {|image| image['large_url']}.to_a.uniq
+      hash[i][:item_keywords]                    = item_keywords(entry['id'])
+      hash[i][:brand_name]                       = entry['brand']['name']
     end
     hash
   end
@@ -18,11 +20,11 @@ module TweetSpecificKeywordHelper
   def tweet_content_with_direct_link
     hash = Hash.new {|h, e| h[e] = {}}
     self.each_with_index do |entry, i|
-      hash[i][:tweet_description]  = "【#{entry['title']}】#{truncate_description(entry['description'])} #{entry['stocks'][0]['item_url']}"
+      hash[i][:tweet_description]             = "【#{entry['title']}】#{truncate_description(entry['description'])} #{entry['stocks'][0]['item_url']}"
       hash[i][:tweet_description_with_brand]  = "【#{entry['title']}】#{entry['brand']['name']} #{entry['stocks'][0]['item_url']}"
-      hash[i][:image]         = entry['images'].map {|image| image['large_url']}.to_a.uniq
-      hash[i][:item_keywords] = item_keywords(entry['id'])
-      hash[i][:brand_name]    = entry['brand']['name']
+      hash[i][:image]                         = entry['images'].map {|image| image['large_url']}.to_a.uniq
+      hash[i][:item_keywords]                 = item_keywords(entry['id'])
+      hash[i][:brand_name]                    = entry['brand']['name']
     end
     hash
   end

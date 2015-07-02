@@ -19,11 +19,15 @@ db_config = YAML.load_file(File.expand_path(File.join(__FILE__, '..', '..', 'con
 ActiveRecord::Base.establish_connection(db_config['db']['production'])
 
 module FavricaSns
-  CACHE_DIR = File.expand_path(File.join(__FILE__, '..', '..', 'tmp', 'cache'))
-  LOG_DIR = File.expand_path(File.join(__FILE__, '..', '..', 'log'))
+  CACHE_DIR                   = File.expand_path(File.join(__FILE__, '..', '..', 'tmp', 'cache'))
+  LOG_DIR                     = File.expand_path(File.join(__FILE__, '..', '..', 'log'))
   FAVRICA_SEARCH_URL_ENDPOINT = 'https://favrica.net/api/v3/items/search?text='
-  FAVRICA_ITEM_ENDPOINT = FAVRICA_SEARCH_URL_ENDPOINT.split('search')[0]
-  DESCRIPTION_TRUNCATE = [0, 30]
-  CREDENTIAL_STORE_FILE = '../tmp/credential-oauth2.json'
-  OAUTH_SOURCE_FILE = '../config/client_secrets.json'
+  FAVRICA_ITEM_ENDPOINT       = FAVRICA_SEARCH_URL_ENDPOINT.split('search')[0]
+  DESCRIPTION_TRUNCATE        = [0, 30]
+  CREDENTIAL_STORE_FILE       = '../tmp/credential-oauth2.json'
+  OAUTH_SOURCE_FILE           = '../config/client_secrets.json'
+  SCREENSHOT_SAVE_PLACE       = '/home/vagrant/dev/'
+  PINTEREST_ID                = 'メールアドレス'
+  PINTEREST_PASS              = 'パスワード'
+  PINTEREST_PINIT_URL         = 'https://jp.pinterest.com/pin/create/button/?url='
 end
