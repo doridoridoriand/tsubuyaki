@@ -9,7 +9,7 @@ module PostPinterestHelper
     driver = Selenium::WebDriver.for :chrome
 
     driver.navigate.to pinterest_url(self[0], self[1], self[2])
-    logger.info("Access succeed: #{driver.title}")
+    logger.info("Access succeed: #{pinterest_url(self[0], self[1], self[2])}")
 
     username = driver.find_element(:xpath, "//li[@class='loginUsername']/input")
     username.send_keys(FavricaSns::PINTEREST_ID)
@@ -23,7 +23,7 @@ module PostPinterestHelper
   private
 
   def pinterest_url(favrica_url, image_url, item_description)
-    "#{FavricaSns::PINTEREST_PINIT_URL}#{favrica_url}&media=#{image_url}&description=#{item_description}"
+    "#{FavricaSns::PINTEREST_PINIT_URL}#{favrica_url}&media=#{image_url}&description=#{item_description.encode}"
   end
 
 end
