@@ -28,5 +28,5 @@ module FavricaSns
   OAUTH_SOURCE_FILE           = '../config/client_secrets.json'
   PINTEREST_ID                = 'メールアドレス'
   PINTEREST_PASS              = 'パスワード'
-  PINTEREST_PINIT_URL         = 'https://jp.pinterest.com/login/?referrer=pinit_button_landing&next=/pin/create/button/?url='
+  PINTEREST_PINIT_URL         = 'https://jp.pinterest.com/pin/create/button/?url='
 end
