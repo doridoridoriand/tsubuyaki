@@ -26,6 +26,7 @@ module FavricaSns
   DESCRIPTION_TRUNCATE        = [0, 30]
   CREDENTIAL_STORE_FILE       = '../tmp/credential-oauth2.json'
   OAUTH_SOURCE_FILE           = '../config/client_secrets.json'
+  SCREENSHOT_SAVE_PLACE       = '/home/vagrant/dev/'
   PINTEREST_ID                = 'メールアドレス'
   PINTEREST_PASS              = 'パスワード'
   PINTEREST_PINIT_URL         = 'https://jp.pinterest.com/pin/create/button/?url='
