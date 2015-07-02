@@ -4,10 +4,10 @@ $: << File.expand_path(File.join(__FILE__, '..', '..', 'lib'))
 require 'favrica_sns'
 $: << File.expand_path(File.join(__FILE__, '..', '..', 'helper'))
 require 'tweet_specific_keyword_helper'
-require 'bot_account_helper'
+require 'post_pinterest_helper'
 
 include TweetSpecificKeywordHelper
-include BotAccountModule
+include PostPinterestHelper
 
 OPTIONS = {}
 OptionParser.new do |opt|
@@ -34,9 +34,8 @@ end
 
 begin
   keyword = FavricaKeyword.where(keyword_en: OPTIONS[:keyword_en])
-  bot_account = BotAccount.find_by(keyword_en: OPTIONS[:keyword_en])
 rescue => error
-  logger.error("Fail to get keyword and bot_account, because of #{error.message}")
+  logger.error("Fail to get keyword, because of #{error.message}")
 end
 
 source_keyword = []
@@ -55,7 +54,6 @@ json_data = json_data.with_gender_adjusted(gender)
 
 if OPTIONS[:execute] && json_data
   for i in 0..(OPTIONS[:number_of_post_times] - 1) do
-    open(json_data.tweet_content[i][:image].sample) do |image_data|
-    end
+    json_data.tweet_content[i].post_pinterest
   end
 end
