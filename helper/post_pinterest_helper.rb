@@ -48,6 +48,9 @@ module PostPinterestHelper
     driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
     sleep(5)
     driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
+
+    driver.quit
+    headless.destroy
   end
 
   private
