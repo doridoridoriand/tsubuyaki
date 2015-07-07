@@ -58,8 +58,12 @@ json_data = json_data.with_gender_adjusted(gender)
 
 if OPTIONS[:execute] && json_data
   for i in 0..(OPTIONS[:number_of_post_times] - 1) do
-    json_data.tweet_content[i].post_pinterest(OPTIONS[:keyword_en])
-    logger.info("Pinit!: #{json_data.tweet_content[i][:tweet_description_no_favrica_url]}")
-    sleep(5)
+    begin
+      json_data.tweet_content[i].post_pinterest(OPTIONS[:keyword_en])
+      logger.info("Pinit!: #{json_data.tweet_content[i][:tweet_description_no_favrica_url]}")
+      sleep(5)
+    rescue => error
+      logger.error("Fail to pinit: #{json_data.tweet_content[i][:tweet_description_no_favrica_url]}, because of #{error.message}")
+    end
   end
 end
