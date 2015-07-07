@@ -37,18 +37,15 @@ else
 end
 
 begin
-  keyword = FavricaKeyword.where(keyword_en: OPTIONS[:keyword_en])
+  keyword = FavricaKeyword.where(keyword_en: OPTIONS[:keyword_en]) ? FavricaKeyword.where(keyword_en: OPTIONS[:keyword_en]) : OPTIONS[:keyword_en]
 rescue => error
   logger.error("Fail to get keyword, because of #{error.message}")
 end
 
-source_keyword = []
-keyword.each do |node|
-  source_keyword << node.keyword_ja
-end
+source_keyword = keyword.map {|node| mode.keyword_ja}[0]
 
 begin
-  json_data = JSON.parse!(open(URI.encode("#{FavricaSns::FAVRICA_SEARCH_URL_ENDPOINT}#{source_keyword[0]}&page=#{OPTIONS[:pagenation]}")).read)
+  json_data = JSON.parse!(open(URI.encode("#{FavricaSns::FAVRICA_SEARCH_URL_ENDPOINT}#{source_keyword}&page=#{OPTIONS[:pagenation]}")).read)
   json_data.shuffle!
 rescue => error
   logger.error("Fail to get json data from favrica.net, because of #{error.message}")
