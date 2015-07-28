@@ -232,3 +232,21 @@ for pagenum in 1..3 do
     command "/home/ubuntu/tsubuyaki/bin/post_pinterest -k sneaker -n 3 -p #{pagenum} -b 8 -l /home/ubuntu/tsubuyaki/log/post_pinterest -e"
   end
 end
+
+for pagenum in 1..3 do
+  every 1.day, at: "#{pagenum + 13}:00" do
+    command "/home/ubuntu/tsubuyaki/bin/post_pinterest -k parka -n 3 -p #{pagenum} -b 9 -l /home/ubuntu/tsubuyaki/log/post_pinterest -e"
+  end
+end
+
+for pagenum in 1..3 do
+  every 1.day, at: "#{pagenum + 13}:30" do
+    command "/home/ubuntu/tsubuyaki/bin/post_pinterest -k one-piece__WOMEN -n 3 -p #{pagenum} -b 12 -l /home/ubuntu/tsubuyaki/log/post_pinterest -e"
+  end
+end
+
+for pagenum in 1..3 do
+  every 1.day, at: "#{pagenum + 16}:00" do
+    command "/home/ubuntu/tsubuyaki/bin/post_pinterest -k swimsuit__WOMEN -n 3 -p #{pagenum} -b 13 -l /home/ubuntu/tsubuyaki/log/post_pinterest -e"
+  end
+end
