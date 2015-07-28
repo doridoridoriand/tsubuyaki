@@ -5,6 +5,7 @@ require 'favrica_sns'
 $: << File.expand_path(File.join(__FILE__, '..', '..', 'helper'))
 require 'tweet_specific_keyword_helper'
 require 'post_pinterest_helper'
+require 'post_pinterest_helper_aaa'
 
 include TweetSpecificKeywordHelper
 include PostPinterestHelper
@@ -14,7 +15,7 @@ OptionParser.new do |opt|
   opt.on('-k keyword', '--keyword_en', String)  {|v| OPTIONS[:keyword_en]           = v}
   opt.on('-n number_of_post_times',    Integer) {|v| OPTIONS[:number_of_post_times] = v}
   opt.on('-p pagenation',              Integer) {|v| OPTIONS[:pagenation]           = v}
- #opt.on('-b button_place',            Integer) {|v| OPTIONS[:button_place]         = v}
+  opt.on('-b button_place',            Integer) {|v| OPTIONS[:button_place]         = v}
   opt.on('-l logfile', '--logfile',    String)  {|v| OPTIONS[:logfile]              = v}
   opt.on('-e',         '--execute')             {|v| OPTIONS[:execute]              = v}
   opt.parse!(ARGV)
@@ -23,7 +24,7 @@ end
 raise OptionParser::MissingArgment unless OPTIONS[:keyword_en]
 raise OptionParser::MissingArgment unless OPTIONS[:number_of_post_times]
 raise OptionParser::MissingArgment unless OPTIONS[:pagenation]
-#raise OptionParser::MissingArgment unless OPTIONS[:button_place]
+raise OptionParser::MissingArgment unless OPTIONS[:button_place]
 
 logger = Logger.new(OPTIONS[:logfile] || STDOUT)
 logger.level = OPTIONS[:execute] ? Logger::INFO : Logger::DEBUG
@@ -37,18 +38,15 @@ else
 end
 
 begin
-  keyword = FavricaKeyword.where(keyword_en: OPTIONS[:keyword_en])
+  keyword = FavricaKeyword.where(keyword_en: OPTIONS[:keyword_en]) ? FavricaKeyword.where(keyword_en: OPTIONS[:keyword_en]) : OPTIONS[:keyword_en]
 rescue => error
   logger.error("Fail to get keyword, because of #{error.message}")
 end
 
-source_keyword = []
-keyword.each do |node|
-  source_keyword << node.keyword_ja
-end
+source_keyword = keyword.map {|node| node.keyword_ja}[0]
 
 begin
-  json_data = JSON.parse!(open(URI.encode("#{FavricaSns::FAVRICA_SEARCH_URL_ENDPOINT}#{source_keyword[0]}&page=#{OPTIONS[:pagenation]}")).read)
+  json_data = JSON.parse!(open(URI.encode("#{FavricaSns::FAVRICA_SEARCH_URL_ENDPOINT}#{source_keyword}&page=#{OPTIONS[:pagenation]}")).read)
   json_data.shuffle!
 rescue => error
   logger.error("Fail to get json data from favrica.net, because of #{error.message}")
@@ -59,7 +57,7 @@ json_data = json_data.with_gender_adjusted(gender)
 if OPTIONS[:execute] && json_data
   for i in 0..(OPTIONS[:number_of_post_times] - 1) do
     begin
-      json_data.tweet_content[i].post_pinterest(OPTIONS[:keyword_en])
+      json_data.tweet_content[i].post_pinterest(OPTIONS[:keyword_en], OPTIONS[:button_place])
       logger.info("Pinit!: #{json_data.tweet_content[i][:tweet_description_no_favrica_url]}")
       sleep(5)
     rescue => error
