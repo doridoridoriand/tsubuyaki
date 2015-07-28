@@ -1,4 +1,4 @@
-set :output, "/home/dorian/Works/tsubuyaki/log/crontab.log"
+set :output, "/home/ubuntu/tsubuyaki/log/crontab.log"
 set :environment, :production
 env :PATH, ENV['PATH']
 job_type :rbenv_rake, %q!eval "$(rbenv init -)"; cd :path && :environment_variable=:environment bundle exec rake :task --silent :output!
@@ -25,125 +25,125 @@ end
 
 # 朝配信するボット
 every 1.day, at: "09:30" do
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k tshirt              -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k shirt               -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k polo-shirt          -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k vest                -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k parka               -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k sweat               -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k outdoor             -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k iPhone-case         -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k sneaker             -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k sandal__WOMEN       -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k swimsuit__WOMEN     -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k one-piece__WOMEN    -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k gaucho-pants__WOMEN -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k hat                 -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k peplum              -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k off-shoulder        -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k linen               -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k bra                 -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k shorts-panties      -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k cardigan            -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k tshirt              -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k shirt               -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k polo-shirt          -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k vest                -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k parka               -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k sweat               -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k outdoor             -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k iPhone-case         -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k sneaker             -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k sandal__WOMEN       -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k swimsuit__WOMEN     -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k one-piece__WOMEN    -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k gaucho-pants__WOMEN -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k hat                 -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k peplum              -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k off-shoulder        -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k linen               -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k bra                 -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k shorts-panties      -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k cardigan            -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
 end
 
 # お昼配信するボット
 every 1.day, at: "12:00" do
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k tshirt              -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k shirt               -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k polo-shirt          -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k vest                -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k parka               -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k sweat               -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k outdoor             -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k iPhone-case         -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k sneaker             -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k sandal__WOMEN       -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k swimsuit__WOMEN     -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k one-piece__WOMEN    -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k gaucho-pants__WOMEN -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k hat                 -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k peplum              -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k off-shoulder        -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k linen               -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k bra                 -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k shorts-panties      -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k cardigan            -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k tshirt              -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k shirt               -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k polo-shirt          -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k vest                -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k parka               -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k sweat               -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k outdoor             -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k iPhone-case         -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k sneaker             -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k sandal__WOMEN       -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k swimsuit__WOMEN     -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k one-piece__WOMEN    -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k gaucho-pants__WOMEN -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k hat                 -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k peplum              -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k off-shoulder        -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k linen               -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k bra                 -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k shorts-panties      -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k cardigan            -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
 end
 
 # 週末の15時あたりに配信するボット
 every :saturday, at: "15:00" do
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k tshirt              -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k shirt               -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k polo-shirt          -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k vest                -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k parka               -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k sweat               -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k outdoor             -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k iPhone-case         -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k sneaker             -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k sandal__WOMEN       -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k swimsuit__WOMEN     -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k one-piece__WOMEN    -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k gaucho-pants__WOMEN -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k hat                 -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k peplum              -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k off-shoulder        -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k linen               -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k bra                 -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k shorts-panties      -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k cardigan            -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k tshirt              -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k shirt               -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k polo-shirt          -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k vest                -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k parka               -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k sweat               -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k outdoor             -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k iPhone-case         -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k sneaker             -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k sandal__WOMEN       -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k swimsuit__WOMEN     -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k one-piece__WOMEN    -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k gaucho-pants__WOMEN -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k hat                 -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k peplum              -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k off-shoulder        -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k linen               -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k bra                 -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k shorts-panties      -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k cardigan            -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
 end
 
 every :sunday, at: "15:00" do
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k tshirt              -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k shirt               -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k polo-shirt          -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k vest                -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k parka               -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k sweat               -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k outdoor             -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k iPhone-case         -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k sneaker             -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k sandal__WOMEN       -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k swimsuit__WOMEN     -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k one-piece__WOMEN    -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k gaucho-pants__WOMEN -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k hat                 -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k peplum              -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k off-shoulder        -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k linen               -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k bra                 -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k shorts-panties      -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k cardigan            -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k tshirt              -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k shirt               -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k polo-shirt          -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k vest                -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k parka               -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k sweat               -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k outdoor             -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k iPhone-case         -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k sneaker             -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k sandal__WOMEN       -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k swimsuit__WOMEN     -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k one-piece__WOMEN    -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k gaucho-pants__WOMEN -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k hat                 -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k peplum              -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k off-shoulder        -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k linen               -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k bra                 -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k shorts-panties      -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k cardigan            -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
 end
 
 # 夜配信するボット
 every 1.day, at: "18:25" do
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k tshirt              -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k shirt               -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k polo-shirt          -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k vest                -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k parka               -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k sweat               -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k outdoor             -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k sandal__WOMEN       -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k swimsuit__WOMEN     -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k one-piece__WOMEN    -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k gaucho-pants__WOMEN -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k tshirt              -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k shirt               -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k polo-shirt          -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k vest                -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k parka               -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k sweat               -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k outdoor             -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k sandal__WOMEN       -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k swimsuit__WOMEN     -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k one-piece__WOMEN    -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k gaucho-pants__WOMEN -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
 end
 
 # 夜の遅い時間帯に配信するボット
 every 1.day, at: "21:00" do
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k iPhone-case    -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k sneaker        -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k hat            -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k peplum         -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k off-shoulder   -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k linen          -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k bra            -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k shorts-panties -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
-  command "/home/dorian/Works/tsubuyaki/bin/tweet_specific_keyword -k cardigan       -n 3 -l /home/dorian/Works/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k iPhone-case    -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k sneaker        -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k hat            -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k peplum         -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k off-shoulder   -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k linen          -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k bra            -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k shorts-panties -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
+  command "/home/ubuntu/tsubuyaki/bin/tweet_specific_keyword -k cardigan       -n 3 -l /home/ubuntu/tsubuyaki/log/tweet_specific_keyword -e"
 end
 
 # follow follower of seed account
@@ -156,7 +156,7 @@ bot_keyword_en.each do |keyword|
     end
   end
   #every 1.day, at: random_times do
-  #  command "/home/dorian/Works/tsubuyaki/bin/follow_follower_of_seed_account -k #{keyword} -n 3 -l /home/dorian/Works/tsubuyaki/log/follow_follower_of_seed_account -e"
+  #  command "/home/ubuntu/tsubuyaki/bin/follow_follower_of_seed_account -k #{keyword} -n 3 -l /home/ubuntu/tsubuyaki/log/follow_follower_of_seed_account -e"
   #end
 end
 
@@ -175,60 +175,60 @@ bot_keyword_en.each do |keyword|
     end
   end
   every 1.day, at: random_times do
-    command "/home/dorian/Works/tsubuyaki/bin/unfollow_not_followback_account -k #{keyword} -n 3 -l /home/dorian/Works/tsubuyaki/log/unfollow_not_followback_account -e"
+    command "/home/ubuntu/tsubuyaki/bin/unfollow_not_followback_account -k #{keyword} -n 3 -l /home/ubuntu/tsubuyaki/log/unfollow_not_followback_account -e"
   end
 end
 
 # ボット用Goolge Docs更新タスク
 every 1.day, at: "23:30" do
-  command "/home/dorian/Works/tsubuyaki/bin/post_bot_information_on_gss"
+  command "/home/ubuntu/tsubuyaki/bin/post_bot_information_on_gss"
 end
 
 # Pinterest用タスク
 for pagenum in 1..3 do
   every 1.day, at: "#{pagenum + 1}:00" do
-    command "/home/dorian/Works/tsubuyaki/bin/post_pinterest -k iPhone-case -n 3 -p #{pagenum} -b 1 -l /home/dorian/Works/tsubuyaki/log/post_pinterest -e"
+    command "/home/ubuntu/tsubuyaki/bin/post_pinterest -k iPhone-case -n 3 -p #{pagenum} -b 1 -l /home/ubuntu/tsubuyaki/log/post_pinterest -e"
   end
 end
 
 for pagenum in 1..3 do
   every 1.day, at: "#{pagenum + 1}:30" do
-    command "/home/dorian/Works/tsubuyaki/bin/post_pinterest -k tshirt -n 3 -p #{pagenum} -b 2 -l /home/dorian/Works/tsubuyaki/log/post_pinterest -e"
+    command "/home/ubuntu/tsubuyaki/bin/post_pinterest -k tshirt -n 3 -p #{pagenum} -b 2 -l /home/ubuntu/tsubuyaki/log/post_pinterest -e"
   end
 end
 
 for pagenum in 1..3 do
   every 1.day, at: "#{pagenum + 4}:00" do
-    command "/home/dorian/Works/tsubuyaki/bin/post_pinterest -k off-shoulder -n 3 -p #{pagenum} -b 3 -l /home/dorian/Works/tsubuyaki/log/post_pinterest -e"
+    command "/home/ubuntu/tsubuyaki/bin/post_pinterest -k off-shoulder -n 3 -p #{pagenum} -b 3 -l /home/ubuntu/tsubuyaki/log/post_pinterest -e"
   end
 end
 
 for pagenum in 1..3 do
   every 1.day, at: "#{pagenum + 4}:30" do
-    command "/home/dorian/Works/tsubuyaki/bin/post_pinterest -k gaucho-pants__WOMEN -n 3 -p #{pagenum} -b 4 -l /home/dorian/Works/tsubuyaki/log/post_pinterest -e"
+    command "/home/ubuntu/tsubuyaki/bin/post_pinterest -k gaucho-pants__WOMEN -n 3 -p #{pagenum} -b 4 -l /home/ubuntu/tsubuyaki/log/post_pinterest -e"
   end
 end
 
 for pagenum in 1..3 do
   every 1.day, at: "#{pagenum + 7}:00" do
-    command "/home/dorian/Works/tsubuyaki/bin/post_pinterest -k sandal__WOMEN -n 3 -p #{pagenum} -b 5 -l /home/dorian/Works/tsubuyaki/log/post_pinterest -e"
+    command "/home/ubuntu/tsubuyaki/bin/post_pinterest -k sandal__WOMEN -n 3 -p #{pagenum} -b 5 -l /home/ubuntu/tsubuyaki/log/post_pinterest -e"
   end
 end
 
 for pagenum in 1..3 do
   every 1.day, at: "#{pagenum + 7}:30" do
-    command "/home/dorian/Works/tsubuyaki/bin/post_pinterest -k shirt -n 3 -p #{pagenum} -b 6 -l /home/dorian/Works/tsubuyaki/log/post_pinterest -e"
+    command "/home/ubuntu/tsubuyaki/bin/post_pinterest -k shirt -n 3 -p #{pagenum} -b 6 -l /home/ubuntu/tsubuyaki/log/post_pinterest -e"
   end
 end
 
 for pagenum in 1..3 do
   every 1.day, at: "#{pagenum + 10}:00" do
-    command "/home/dorian/Works/tsubuyaki/bin/post_pinterest -k sweat -n 3 -p #{pagenum} -b 7 -l /home/dorian/Works/tsubuyaki/log/post_pinterest -e"
+    command "/home/ubuntu/tsubuyaki/bin/post_pinterest -k sweat -n 3 -p #{pagenum} -b 7 -l /home/ubuntu/tsubuyaki/log/post_pinterest -e"
   end
 end
 
 for pagenum in 1..3 do
   every 1.day, at: "#{pagenum + 10}:30" do
-    command "/home/dorian/Works/tsubuyaki/bin/post_pinterest -k sneaker -n 3 -p #{pagenum} -b 8 -l /home/dorian/Works/tsubuyaki/log/post_pinterest -e"
+    command "/home/ubuntu/tsubuyaki/bin/post_pinterest -k sneaker -n 3 -p #{pagenum} -b 8 -l /home/ubuntu/tsubuyaki/log/post_pinterest -e"
   end
 end
