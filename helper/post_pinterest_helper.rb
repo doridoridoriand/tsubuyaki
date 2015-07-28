@@ -38,7 +38,7 @@ module PostPinterestHelper
     driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
     driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
 
-    driver.find_element(:xpath, "//ul[@class='sectionItems']/li[#{button_place}]").click
+    driver.find_element(:xpath, "//ul[@class='section allBoards']/ul[@class='sectionItems']/li[#{button_place}]").click
 
     driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
     driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")

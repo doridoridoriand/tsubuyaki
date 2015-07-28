@@ -5,7 +5,6 @@ require 'favrica_sns'
 $: << File.expand_path(File.join(__FILE__, '..', '..', 'helper'))
 require 'tweet_specific_keyword_helper'
 require 'post_pinterest_helper'
-require 'post_pinterest_helper_aaa'
 
 include TweetSpecificKeywordHelper
 include PostPinterestHelper
