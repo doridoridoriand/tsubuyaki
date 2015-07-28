@@ -124,8 +124,11 @@ PLATFORMS
 DEPENDENCIES
   activerecord (= 4.2.1)
   cache_local (>= 0.0.1)
-  google_drive (>= 1.0.1)
-  headless
-  selenium-webdriver
+  google_drive (= 1.0.1)
+  headless (>= 2.1.0)
+  selenium-webdriver (>= 2.45.0)
   twitter (>= 5.14.0)
   whenever
+
+BUNDLED WITH
+   1.10.6
