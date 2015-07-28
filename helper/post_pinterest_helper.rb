@@ -3,22 +3,16 @@ require 'favrica_sns'
 
 module PostPinterestHelper
 
-  def post_pinterest(target_keyword)
+  def post_pinterest(target_keyword, button_place)
     headless = Headless.new
     headless.start
+
     driver = Selenium::WebDriver.for :chrome
 
-    p pinterest_url(self[:favrica_url], self[:image].sample, self[:tweet_description_no_favrica_url])
-    driver.navigate.to pinterest_url(self[:favrica_url], self[:image].sample, self[:tweet_description_no_favrica_url])
+    driver.navigate.to FavricaSns::PINTEREST_LANDING_PAGE
 
     driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
-
-    driver.find_element(:xpath, "//div[@class='savePinDialog']/div/div/a").click
-
     driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
-    sleep(5)
-    driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
-    sleep(5)
     driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
 
     username = driver.find_element(:xpath, "//li[@class='loginUsername']/input")
@@ -29,24 +23,28 @@ module PostPinterestHelper
     password = driver.find_element(:xpath, "//li[@class='loginPassword']/input")
     password.send_keys(FavricaSns::PINTEREST_PASS)
 
-    driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
-
-    driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
-
     driver.find_element(:xpath, "//div[@class='formFooterButtons']/button").click
 
     driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
-    sleep(5)
     driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
-    sleep(5)
     driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
 
-    driver.find_element(:xpath, "//ul[@class='sectionItems']/li/div/button").click
+    driver.navigate.to pinterest_url(self[:favrica_url], self[:image].sample, self[:tweet_description_no_favrica_url])
 
     driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
-    sleep(5)
     driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
-    sleep(5)
+    driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
+    driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
+    driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
+    driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
+
+    driver.find_element(:xpath, "//ul[@class='sectionItems']/li[#{button_place}]").click
+
+    driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
+    driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
+    driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
+    driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
+    driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
     driver.save_screenshot("#{FavricaSns::SCREENSHOT_SAVE_PLACE}#{target_keyword}_#{Time.now.to_s}.png")
 
     driver.quit

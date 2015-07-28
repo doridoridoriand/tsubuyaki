@@ -34,5 +34,6 @@ module FavricaSns
   SCREENSHOT_SAVE_PLACE       = '/home/vagrant/dev/'
   PINTEREST_ID                = 'メールアドレス'
   PINTEREST_PASS              = 'パスワード'
+  PINTEREST_LANDING_PAGE      = 'https://jp.pinterest.com/login/?referrer=home_page'
   PINTEREST_PINIT_URL         = 'https://jp.pinterest.com/pin/create/button/?url='
 end
