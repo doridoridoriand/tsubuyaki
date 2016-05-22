@@ -1,3 +1,6 @@
+
+[![codebeat badge](https://codebeat.co/badges/5315d533-2735-4801-8f43-e079f77d71d8)](https://codebeat.co/projects/github-com-doridoridoriand-tsubuyaki)
+
 # 実行方法
 ## `tweet_specific_keyword`
 `./bin/tweet_specific_keyword -k キーワード -n 一回の実行でつぶやく回数 [-l logfileの絶対パス(指定しないと標準出力)] [-e --execute]`
